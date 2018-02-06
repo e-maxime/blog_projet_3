@@ -12,7 +12,7 @@
     <div class="container">
         <div class="row">
             <header class="page-header">
-                <h1>Un billet simple pour l'Alaska - Jean FORTEROCHE</h1>
+                <h1>Un billet simple pour l'Alaska, Jean FORTEROCHE</h1>
             </header>
         </div>
         
