@@ -20,14 +20,6 @@ class Post
             WHERE id = ?", [$_GET['id']], __CLASS__, true);
     }
     
-    public static function findPostId($id)
-    {
-        return App::getDb()->prepare("
-            SELECT id, author, title, content, DATE_FORMAT(date_create, '%d/%m/%Y ') AS date_create_fr 
-            FROM posts 
-            WHERE id = ?", [$_GET['id']], __CLASS__, true);
-    }
-    
     
     public function getUrl()
     {

@@ -7,11 +7,8 @@ use \App\Model\Comments;
 
     if($post === false)
     {
-        header("HTTP/1.0 404 Not Found");
-        header('Location: index.php?page=404');
+        App::pageNotFound();
     }
-
-    
 
     App::setTitlePage($post->title);
 ?>
