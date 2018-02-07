@@ -28,11 +28,17 @@ class PostsController extends AppController
 
         if($post === false)
         {
-            $this->notFound();
+            $this->pageNotFound();
         }
         
         $comments = Comments::getComments();
         
         $this->render('single_episode', compact('post', 'comments'));
+    }
+    
+    public function showAllEpisodes()
+    {
+        $posts = Post::getAllEpisodes();
+        $this->render('episodes', compact('posts'));
     }
 }
