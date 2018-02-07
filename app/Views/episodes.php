@@ -7,4 +7,12 @@
     <div class="panel-body"><?= $post->getExcerpt(); ?></div>
 </div>
 
-<?php endforeach; ?>
+<?php endforeach;
+
+
+
+
+
+?>
+
+

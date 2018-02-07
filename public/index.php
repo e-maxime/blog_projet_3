@@ -13,7 +13,6 @@ require('../app/Controller/CommentsController.php');
     {
         $page = 'home';
     }
-    
 
     if($page === 'home')
     {
