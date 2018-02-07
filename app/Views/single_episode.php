@@ -1,5 +1,4 @@
 <?php
-use \App\Model\Comments;
 \App\App::setTitlePage($post->title);
 ?>
 
