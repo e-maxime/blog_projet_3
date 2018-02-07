@@ -1,7 +1,8 @@
 <?php
 require('../app/Database.php');
 require('../app/App.php');
-require '../app/Model/CommentRegister.php';
+require('../app/Model/CommentRegister.php');
+require('../app/Controller/PostsController.php');
     
     if(isset($_GET['page']))
     {
@@ -12,11 +13,11 @@ require '../app/Model/CommentRegister.php';
         $page = 'home';
     }
     
-ob_start();
 
     if($page === 'home')
     {
-        require ('../app/Views/index.php');
+        $controller = new \App\Controller\PostsController();
+        $controller->index();
     }
     elseif($page === 'episodes')
     {
@@ -29,7 +30,8 @@ ob_start();
     }
     elseif($page === 'post')
     {
-        require ('../app/Views/single_episode.php');
+        $controller = new \App\Controller\PostsController();
+        $controller->show();
     }
     elseif($page === 'comment')
     {
@@ -55,7 +57,5 @@ ob_start();
     {
         echo 'Aucun article n\'a été trouvé.';
     }
-$content = ob_get_clean();
-require('../app/Views/templates/default.php');
 
 ?>

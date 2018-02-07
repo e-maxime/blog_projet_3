@@ -1,16 +1,6 @@
 <?php
-use \App\App;
-use \App\Model\Post;
 use \App\Model\Comments;
-
-    $post = Post::getOneEpisode($_GET['id']);
-
-    if($post === false)
-    {
-        App::pageNotFound();
-    }
-
-    App::setTitlePage($post->title);
+\App\App::setTitlePage($post->title);
 ?>
 
 <div class="panel panel-primary">
@@ -24,8 +14,8 @@ use \App\Model\Comments;
     <div class="panel-heading">
         <h3 class="panel-title">Commentaires</h3>
     </div>
-    <?php foreach(Comments::getComments() as $comments): ?>
-    <div class="panel-body"><?php echo "<p>De " . $comments->nickname . " le " . $comments->date_publish_fr . " :</p><p>" . $comments->content . "</p>"; ?></div>
+    <?php foreach($comments as $comment): ?>
+    <div class="panel-body"><?php echo "<p>De " . $comment->nickname . " le " . $comment->date_publish_fr . " :</p><p>" . $comment->content . "</p>"; ?></div>
     <?php endforeach; ?>
 </div>
 
