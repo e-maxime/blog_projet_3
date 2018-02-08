@@ -24,10 +24,6 @@ require('../app/Controller/CommentsController.php');
         $controller = new \App\Controller\PostsController();
         $controller->showAllEpisodes();
     }
-    elseif($page === 'contact')
-    {
-        require '../Views/contact.php';
-    }
     elseif($page === 'post')
     {
         $controller = new \App\Controller\PostsController();
@@ -37,6 +33,10 @@ require('../app/Controller/CommentsController.php');
     {
         $controller = new \App\Controller\CommentsController();
         $controller->checkInsertComment();
+    }
+    elseif($page === 'login')
+    {
+        require('../app/Views/users/login.php');
     }
     elseif($page === '404')
     {

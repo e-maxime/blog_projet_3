@@ -31,5 +31,10 @@ class App
         self::$_titlePage = $pageTitle . ' | ' . self::$_titlePage;
     }
     
+    public function forbidden()
+    {
+        header('HTTP/1.0 403 Forbidden');
+        die('Accès interdit.');
+    }
     
 }

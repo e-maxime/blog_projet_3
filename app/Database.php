@@ -30,10 +30,20 @@ class Database
         return $this->_db;
     }
     
-    public function query($statement, $class_name, $only_one = false)
+    public function query($statement, $class_name = null, $only_one = false)
     {
         $req = $this->getDb()->query($statement);
-        $req->setFetchMode(PDO::FETCH_CLASS, $class_name);
+        
+        if($class_name === null)
+        {
+            $req->setFetchMode(PDO::FETCH_OBJ);
+        }
+        
+        else
+        {
+            $req->setFetchMode(PDO::FETCH_CLASS, $class_name);
+        }
+        
         if($only_one)
         {
             $data = $req->fetch();
@@ -45,11 +55,21 @@ class Database
         return $data;
     }
     
-    public function prepare($statement, $attributes, $class_name, $only_one = false)
+    public function prepare($statement, $attributes, $class_name = null, $only_one = false)
     {
         $req = $this->getDb()->prepare($statement);
         $req->execute($attributes);
-        $req->setFetchMode(PDO::FETCH_CLASS, $class_name);
+        
+        if($class_name === null)
+        {
+            $req->setFetchMode(PDO::FETCH_OBJ);
+        }
+        
+        else
+        {
+            $req->setFetchMode(PDO::FETCH_CLASS, $class_name);
+        }
+
         if($only_one)
         {
             $data = $req->fetch();
