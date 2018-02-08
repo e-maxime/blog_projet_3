@@ -30,4 +30,6 @@ class App
     {
         self::$_titlePage = $pageTitle . ' | ' . self::$_titlePage;
     }
+    
+    
 }

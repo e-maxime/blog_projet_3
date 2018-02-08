@@ -1,7 +1,9 @@
 <?php
 require('../app/Database.php');
 require('../app/App.php');
-require '../app/Model/CommentRegister.php';
+require('../app/Model/CommentRegister.php');
+require('../app/Controller/PostsController.php');
+require('../app/Controller/CommentsController.php');
     
     if(isset($_GET['page']))
     {
@@ -11,17 +13,16 @@ require '../app/Model/CommentRegister.php';
     {
         $page = 'home';
     }
-    
-ob_start();
 
     if($page === 'home')
     {
-        require ('../app/Views/index.php');
+        $controller = new \App\Controller\PostsController();
+        $controller->index();
     }
     elseif($page === 'episodes')
     {
-        require ('../app/Views/episodes.php');
-
+        $controller = new \App\Controller\PostsController();
+        $controller->showAllEpisodes();
     }
     elseif($page === 'contact')
     {
@@ -29,33 +30,17 @@ ob_start();
     }
     elseif($page === 'post')
     {
-        require ('../app/Views/single_episode.php');
+        $controller = new \App\Controller\PostsController();
+        $controller->show();
     }
     elseif($page === 'comment')
     {
-        if(isset($_GET['id']) && $_GET['id'] > 0)
-        {
-            if(!empty($_POST['pseudo']) && !empty($_POST['comment']))
-            {
-                $addPostComment = new \App\Model\CommentRegister();
-                $addPostComment->addComment();
-            }
-            
-            else
-            {
-                echo "Tous les champs ne sont pas remplis.";
-            }
-        }
-        else
-        {
-            echo "Aucun identifiant de billet n'a été envoyé.";
-        }
+        $controller = new \App\Controller\CommentsController();
+        $controller->checkInsertComment();
     }
     elseif($page === '404')
     {
-        echo 'Aucun article n\'a été trouvé.';
+        echo '<p>Aucun article n\'a été trouvé. </p><a href="index.php">Retourner à l\'accueil</a>';
     }
-$content = ob_get_clean();
-require('../app/Views/templates/default.php');
 
 ?>

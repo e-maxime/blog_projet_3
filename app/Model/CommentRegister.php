@@ -13,7 +13,7 @@ class CommentRegister
         
         $req->execute(array($_GET['id'], htmlspecialchars($_POST['pseudo']), htmlspecialchars($_POST['comment'])));
         
-        if ($comment === false) 
+        if ($req === false) 
         {
             throw new Exception('Impossible d\'ajouter le commentaire. Veuillez réessayer.');
         }

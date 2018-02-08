@@ -1,7 +1,3 @@
-<?php
-use \App\Model\Post;
-?>
-
 <div class="row">
             <blockquote class="col-lg-8">
                 Bienvenue, vous retrouverez sur le site tous les épisodes de mon livre "Un billet simple pour l'Alaska".<br/>
@@ -14,13 +10,13 @@ use \App\Model\Post;
             </div>
 </div>
 
-<?php foreach(Post::getLastEpisodes() as $posts): ?>
+<?php foreach($posts as $post): ?>
 
 <div class="panel panel-primary">
     <div class="panel-heading">
-        <h3 class="panel-title"><a href="<?= $posts->getUrl(); ?>"><?= $posts->title . " - " . $posts->author . " le " . $posts->date_create_fr; ?></a></h3>
+        <h3 class="panel-title"><a href="<?= $post->getUrl(); ?>"><?= $post->title . " - " . $post->author . " le " . $post->date_create_fr; ?></a></h3>
     </div>
-    <div class="panel-body"><?= $posts->getExcerpt(); ?></div>
+    <div class="panel-body"><?= $post->getExcerpt(); ?></div>
 </div>
 
 <?php endforeach; ?>
