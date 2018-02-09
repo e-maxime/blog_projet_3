@@ -4,43 +4,36 @@ require('../app/App.php');
 require('../app/Model/CommentRegister.php');
 require('../app/Controller/PostsController.php');
 require('../app/Controller/CommentsController.php');
-    
-    if(isset($_GET['page']))
-    {
-        $page = $_GET['page'];
-    }
-    else
-    {
-        $page = 'home';
-    }
 
-    if($page === 'home')
+if(isset($_GET['action']))
+{
+    if($_GET['action'] == 'homePosts')
     {
         $controller = new \App\Controller\PostsController();
         $controller->index();
     }
-    elseif($page === 'episodes')
-    {
-        $controller = new \App\Controller\PostsController();
-        $controller->showAllEpisodes();
-    }
-    elseif($page === 'post')
+    elseif($_GET['action'] == 'singlePost')
     {
         $controller = new \App\Controller\PostsController();
         $controller->show();
     }
-    elseif($page === 'comment')
+    elseif($_GET['action'] == 'allPosts')
+    {
+        $controller = new \App\Controller\PostsController();
+        $controller->showAllEpisodes();
+    }
+    elseif($_GET['action'] == 'addComment')
     {
         $controller = new \App\Controller\CommentsController();
         $controller->checkInsertComment();
     }
-    elseif($page === 'login')
-    {
-        require('../app/Views/users/login.php');
-    }
-    elseif($page === '404')
+    elseif($_GET['action'] == '404')
     {
         echo '<p>Aucun article n\'a été trouvé. </p><a href="index.php">Retourner à l\'accueil</a>';
     }
-
-?>
+}
+else
+{
+    $controller = new \App\Controller\PostsController();
+    $controller->index();
+}

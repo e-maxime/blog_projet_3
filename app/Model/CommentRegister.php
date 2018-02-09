@@ -19,7 +19,7 @@ class CommentRegister
         }
         else 
         {
-            header('Location: index.php?page=post&id=' . $_GET['id']);
+            header('Location: index.php?action=singlePost&id=' . $_GET['id']);
         } 
     }
 }
