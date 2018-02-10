@@ -6,7 +6,6 @@ class CommentRegister
 {
     public function addComment()
     {
-        
         $bdd = new PDO('mysql:dbname=projet_blog;host=localhost', 'root', 'root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
         
         $req = $bdd->prepare('INSERT INTO comments(post_id, nickname, content, date_publish) VALUES (?, ?, ?, NOW())');

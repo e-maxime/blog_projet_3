@@ -12,6 +12,4 @@ class Comments
             WHERE post_id = ? 
             ORDER BY date_publish LIMIT 0,5", [$_GET['id']], __CLASS__);
     }
-    
-    
 }
