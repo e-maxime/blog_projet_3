@@ -1,8 +1,6 @@
 <?php
 namespace App;
 use \PDO;
-require('Model/Post.php');
-require('Model/Comments.php');
 
 class Database
 {

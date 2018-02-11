@@ -1,7 +1,6 @@
 <?php
 require('../app/Database.php');
 require('../app/App.php');
-require('../app/Model/CommentRegister.php');
 require('../app/Controller/PostsController.php');
 require('../app/Controller/CommentsController.php');
 

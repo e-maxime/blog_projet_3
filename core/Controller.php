@@ -14,6 +14,11 @@ class Controller
         $content = ob_get_clean();
         require($this->viewPath . 'templates/'. $this->template . '.php');
     }
+
+    protected function loadModel($model_name)
+    {
+        require('../app/Model/'.$model_name . ".php");
+    }
     
     protected static function pageNotFound()
     {

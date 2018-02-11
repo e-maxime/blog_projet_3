@@ -1,6 +1,4 @@
-<?php
-\App\App::setTitlePage($post->title);
-?>
+<?php \App\App::setTitlePage($post->title); ?>
 
 <div class="panel panel-primary">
     <div class="panel-heading">

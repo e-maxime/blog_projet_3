@@ -1,7 +1,7 @@
 <?php
 namespace App\Controller;
 
-class CommentsController
+class CommentsController extends AppController
 {
     public function checkInsertComment()
     {
@@ -9,7 +9,8 @@ class CommentsController
         {
             if(!empty($_POST['pseudo']) && !empty($_POST['comment']))
             {
-                $addPostComment = new \App\Model\CommentRegister();
+                $this->loadModel('Comments');
+                $addPostComment = new \App\Model\Comments();
                 $addPostComment->addComment();
             }
             

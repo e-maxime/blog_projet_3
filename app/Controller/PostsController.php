@@ -17,6 +17,7 @@ class PostsController extends AppController
     //Liste les différents articles
     public function index()
     {
+        $this->loadModel('Post');
         $posts = Post::getLastEpisodes();
         $this->render('index', compact('posts'));
     }
@@ -24,13 +25,14 @@ class PostsController extends AppController
     //Voir un article et ses commentaires
     public function show()
     {
+        $this->loadModel('Post');
         $post = Post::getOneEpisode($_GET['id']);
 
         if($post === false)
         {
             $this->pageNotFound();
         }
-        
+        $this->loadModel('Comments');
         $comments = Comments::getComments();
         
         $this->render('single_episode', compact('post', 'comments'));
@@ -38,6 +40,7 @@ class PostsController extends AppController
     
     public function showAllEpisodes()
     {
+        $this->loadModel('Post');
         $posts = Post::getAllEpisodes();
         $this->render('episodes', compact('posts'));
     }
