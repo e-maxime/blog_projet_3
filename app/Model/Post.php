@@ -30,7 +30,7 @@ class Post
     
     public function getUrl()
     {
-        return 'index.php?action=singlePost&id=' . $this->id;
+        return 'index.php?page=posts.show&id=' . $this->id;
     }
     
     public function getExcerpt()

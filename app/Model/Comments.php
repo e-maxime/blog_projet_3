@@ -28,7 +28,7 @@ class Comments
         }
         else 
         {
-            header('Location: index.php?action=singlePost&id=' . $_GET['id']);
+            header('Location: index.php?page=posts.show&id=' . $_GET['id']);
         } 
     }
 }

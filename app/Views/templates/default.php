@@ -19,8 +19,8 @@
         <div class="row">
             <nav class="navbar navbar-inverse">
                 <ul class="nav navbar-nav">
-                    <li><a href="index.php">Accueil</a></li>
-                    <li><a href="index.php?action=allPosts">Les épisodes</a></li>
+                    <li><a href="index.php?page=posts.index">Accueil</a></li>
+                    <li><a href="index.php?page=posts.showAllEpisodes">Les épisodes</a></li>
                 </ul>
             </nav>
         </div>

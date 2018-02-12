@@ -17,7 +17,7 @@
 </div>
 
 <div>
-    <form class="well col-lg-6" action="index.php?action=addComment&id=<?= $_GET['id']; ?>" method="post">
+    <form class="well col-lg-6" action="index.php?page=comments.checkInsertComment&id=<?= $_GET['id']; ?>" method="post">
         <legend>Commentaire</legend>
         <div class="form-group">
             <label for="text">Pseudonyme : </label>

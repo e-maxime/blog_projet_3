@@ -11,7 +11,7 @@ class PostsController extends Controller
     {
         $this->loadModel('Post');
         $posts = Post::getLastEpisodes();
-        $this->render('index', compact('posts'));
+        $this->render('posts.index', compact('posts'));
     }
     
     //Voir un article et ses commentaires
@@ -27,13 +27,13 @@ class PostsController extends Controller
         $this->loadModel('Comments');
         $comments = Comments::getComments();
         
-        $this->render('single_episode', compact('post', 'comments'));
+        $this->render('posts.single_episode', compact('post', 'comments'));
     }
     
     public function showAllEpisodes()
     {
         $this->loadModel('Post');
         $posts = Post::getAllEpisodes();
-        $this->render('episodes', compact('posts'));
+        $this->render('posts.episodes', compact('posts'));
     }
 }
