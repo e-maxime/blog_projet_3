@@ -3,9 +3,6 @@ namespace App\Controller;
 
 use \App\Model\Post;
 use \App\Model\Comments;
-use \Core\Controller;
-
-require('../core/Controller.php');
 
 class PostsController extends Controller
 {   

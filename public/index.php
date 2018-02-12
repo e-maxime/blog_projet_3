@@ -1,8 +1,7 @@
 <?php
-require('../app/Database.php');
-require('../app/App.php');
-require('../app/Controller/PostsController.php');
-require('../app/Controller/CommentsController.php');
+
+require('../app/Autoloader.php');
+\App\Autoloader::register();
 
 if(isset($_GET['action']))
 {
