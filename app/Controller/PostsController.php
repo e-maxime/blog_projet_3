@@ -3,17 +3,12 @@ namespace App\Controller;
 
 use \App\Model\Post;
 use \App\Model\Comments;
-use \App\Controller\AppController;
+use \Core\Controller;
 
-require ('AppController.php');
+require('../core/Controller.php');
 
-class PostsController extends AppController
-{
-    public function __construct()
-    {
-        parent::__construct();
-    }
-    
+class PostsController extends Controller
+{   
     //Liste les différents articles
     public function index()
     {

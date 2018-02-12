@@ -1,7 +1,9 @@
 <?php
 namespace App\Controller;
 
-class CommentsController extends AppController
+use \Core\Controller;
+
+class CommentsController extends Controller
 {
     public function checkInsertComment()
     {

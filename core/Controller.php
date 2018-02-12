@@ -1,10 +1,10 @@
 <?php
-namespace Core\Controller;
+namespace Core;
 
 class Controller
 {
-    protected $viewPath;
-    protected $template;
+    protected $viewPath = '../app/Views/';
+    protected $template = 'default';
     
     protected function render($view, $variables=[])
     {
