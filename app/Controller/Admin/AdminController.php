@@ -7,7 +7,7 @@ use \App\Model\Admin\Login;
 class AdminController extends Controller
 {
 	public function index()
-    {
+    {   
         $this->render('admin.index');
     }
 
@@ -27,6 +27,18 @@ class AdminController extends Controller
     {
     	$this->loadModel('Login');
     	$log = Login::checkLogin();
+
+        if(!$log)
+        {
+            echo 'Identifiants incorrects.';
+        }
+
+        else
+        {
+            session_start();
+            $_SESSION['id'] = $log['id'];
+            $this->render('admin.index');
+        }
     }
 
 }

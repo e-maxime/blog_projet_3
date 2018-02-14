@@ -26,15 +26,15 @@
         </div>
         
         <div class="row">
-			<form method="post" action="admin.php?page=admin.getLog" class="col-lg-6">
+			<form method="POST" action="admin.php?page=admin.getLog" class="col-lg-6">
 				<legend>Connexion</legend>
 					<div class="form-group">
-						<label for="texte">Nom d'utilisateur : </label>
-						<input id="username" type="text" class="form-control">
+						<label>Nom d'utilisateur : </label>
+						<input id="username" name="username" type="text" class="form-control">
 					</div>
 					<div class="form-group">
-						<label for="texte">Mot de passe : </label>
-						<input id="pass" type="password" class="form-control">
+						<label>Mot de passe : </label>
+						<input id="pass" type="password" name="pass" class="form-control">
 					</div>
 						<button class="btn btn-info">Envoyer</button>
 			</form>

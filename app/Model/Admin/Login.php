@@ -1,36 +1,31 @@
 <?php
 namespace App\Model\Admin;
 
-use \App\App;
 use \PDO;
 
 class Login
 {
 	public static function checkLogin()
 	{
-		$bdd = new PDO('mysql:dbname=projet_blog;host=localhost', 'root', 'root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-        
-        $req = $bdd->prepare('SELECT * FROM users WHERE username = ? && password = ?');
-        
-        $req->execute(array(htmlspecialchars($_POST['username']), htmlspecialchars($_POST['pass'])));
+        $username = $_POST['username'];
+        $password = $_POST['pass'];
 
-       	$data = $req->fetchAll();
+        $bdd = new PDO('mysql:dbname=projet_blog;host=localhost', 'root', 'root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+		$req = $bdd->prepare("
+                            SELECT * 
+                            FROM users 
+                            WHERE username = :username AND password = :password
+                            ");
+        $req->execute(array('username' => $username, 'password' => $password));
 
-       	var_dump($data);
-       	die();
-        
-        if ($req === false) 
-        {
-            ?>
-            <div class="alert alert-danger">
-            	<p>Identifiants incorrects.</p>
-            </div>
-            <?php
-        }
-        else 
-        {
-            header('Location: admin.php?page=admin.index');
-        } 
+        $user = $req->fetch();
+
+        return $user;
 	}
+
+    public static function logged()
+    {
+        
+    }
 }
 ?>

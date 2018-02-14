@@ -10,7 +10,7 @@ if(isset($_GET['page']))
 
 else
 {
-    $page = 'admin.login';
+    $page = 'admin.index';
 }
 
 $page = explode('.', $page);
