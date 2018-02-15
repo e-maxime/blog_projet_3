@@ -34,6 +34,7 @@ class PostsController extends Controller
     {
         $this->loadModel('Post');
         $posts = Post::getAllEpisodes();
+        $paging = Post::paging();
         $this->render('posts.episodes', compact('posts'));
     }
 }

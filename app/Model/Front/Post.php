@@ -1,9 +1,13 @@
 <?php
 namespace App\Model\Front;
 use App\App;
+use \PDO;
 
 class Post
 {   
+    public static $nbPostsByPage = 5;
+    public static $currentPage = 1;
+
     public static function getLastEpisodes()
     {
        return App::getDb()->query("
@@ -25,8 +29,39 @@ class Post
         return App::getDb()->query("
             SELECT id, author, title, content, DATE_FORMAT(date_create, '%d/%m/%Y') AS date_create_fr 
             FROM posts 
-            ORDER BY date_create LIMIT 0,5", __CLASS__);
+            ORDER BY date_create LIMIT ".((self::$currentPage-1)*self::$nbPostsByPage).",".self::$nbPostsByPage, __CLASS__);
     }
+
+    public static function counting()
+    {
+        $bdd = new PDO('mysql:dbname=projet_blog;host=localhost', 'root', 'root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
+
+        $req = $bdd->query('SELECT COUNT(id) AS nbPosts FROM posts');
+        $data = $req->fetch();
+        $nbPosts = $data['nbPosts'];
+        return $nbPosts;
+    }
+
+    public static function paging()
+    {
+        $nbPosts = self::counting();
+        $nbPage = ceil($nbPosts/self::$nbPostsByPage);
+
+        if(isset($_GET['p']) && $_GET['p']>0 && $_GET['p']<=$nbPage)
+        {
+            self::$currentPage = $_GET['p'];
+        }
+        else
+        {
+            self::$currentPage = 1;
+        }
+
+        for ($i=1; $i<=$nbPage; $i++)
+        {
+            echo "<a href=\"index.php?page=posts.showAllEpisodes&p=$i\">$i</a> / ";
+        }
+    }
+
     
     public function getUrl()
     {
