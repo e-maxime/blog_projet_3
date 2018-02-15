@@ -2,13 +2,22 @@
 namespace App\Controller\Admin;
 
 use \App\Model\Admin\Post;
+use \App\Model\Admin\Comments;
 use \App\Model\Admin\Login;
 
 class AdminController extends Controller
 {
 	public function index()
     {   
-        $this->render('admin.index');
+        $auth = new \App\Model\Admin\Login(\App\App::getDb());
+        if(!$auth->logged())
+        {
+            require('../app/Views/admin/login.php');
+        }
+        else
+        {
+            $this->render('admin.index');   
+        }
     }
 
     public function allEpisodes()
@@ -16,6 +25,13 @@ class AdminController extends Controller
         $this->loadModel('Post');
         $posts = Post::getAllEpisodes();
         $this->render('admin.episodes', compact('posts'));
+    }
+
+    public function allComments()
+    {
+        $this->loadModel('Comments');
+        $comments = Comments::getAllComments();
+        $this->render('admin.comments', compact('comments'));
     }
 
     public function login()
@@ -30,15 +46,23 @@ class AdminController extends Controller
 
         if(!$log)
         {
-            echo 'Identifiants incorrects.';
+        ?>
+            <div class="alert alert-danger">Identifiants incorrects.</div>
+        <?php
+            require('../app/Views/admin/login.php');
         }
 
         else
         {
-            session_start();
-            $_SESSION['id'] = $log['id'];
+            $_SESSION['auth'] = $log['id'];
             $this->render('admin.index');
         }
+    }
+
+    public function disconnect()
+    {
+        session_destroy();
+        require('../app/Views/admin/login.php');
     }
 
 }

@@ -1,5 +1,5 @@
 <?php
-namespace App\Controller;
+namespace App\Controller\Front;
 
 class CommentsController extends Controller
 {
@@ -10,7 +10,7 @@ class CommentsController extends Controller
             if(!empty($_POST['pseudo']) && !empty($_POST['comment']))
             {
                 $this->loadModel('Comments');
-                $addPostComment = new \App\Model\Comments();
+                $addPostComment = new \App\Model\Front\Comments();
                 $addPostComment->addComment();
             }
             

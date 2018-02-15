@@ -1,8 +1,8 @@
 <?php
-namespace App\Controller;
+namespace App\Controller\Front;
 
-use \App\Model\Post;
-use \App\Model\Comments;
+use \App\Model\Front\Post;
+use \App\Model\Front\Comments;
 
 class PostsController extends Controller
 {   

@@ -34,7 +34,7 @@
             <footer>
                 <nav class="navbar navbar-inverse">
                     <ul class="nav navbar-nav">
-                        <li><a href="#">Se déconnecter</a></li>
+                        <li><a href="admin.php?page=admin.disconnect">Se déconnecter</a></li>
                     </ul>
                 </nav>
             </footer>

@@ -16,6 +16,6 @@ else
 $page = explode('.', $page);
 $action = $page[1];
 
-$controller = '\App\Controller\\' . ucfirst($page[0]) . 'Controller';
+$controller = '\App\Controller\Front\\' . ucfirst($page[0]) . 'Controller';
 $controller = new $controller();
 $controller->$action();

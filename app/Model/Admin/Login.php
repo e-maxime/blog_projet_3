@@ -5,6 +5,8 @@ use \PDO;
 
 class Login
 {
+    private $_db;
+
 	public static function checkLogin()
 	{
         $username = $_POST['username'];
@@ -23,9 +25,9 @@ class Login
         return $user;
 	}
 
-    public static function logged()
+    public function logged()
     {
-        
+        return isset($_SESSION['auth']);
     }
 }
 ?>

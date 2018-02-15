@@ -1,5 +1,5 @@
 <?php
-namespace App\Controller;
+namespace App\Controller\Front;
 
 class Controller
 {
@@ -17,7 +17,7 @@ class Controller
 
     protected function loadModel($model_name)
     {
-        require('../app/Model/'.$model_name . ".php");
+        require('../app/Model/Front/'. $model_name . ".php");
     }
     
     protected static function pageNotFound()
