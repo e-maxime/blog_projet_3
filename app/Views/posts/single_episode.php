@@ -14,6 +14,7 @@
     <?php foreach($comments as $comment): ?>
     <div class="panel-body"><?php echo "<p>De " . $comment->nickname . " le " . $comment->date_publish_fr . " :</p><p>" . $comment->content . "</p>"; ?></div>
     <?php endforeach; ?>
+    <?php echo $paging; ?>
 </div>
 
 <div>

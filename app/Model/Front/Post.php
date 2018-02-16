@@ -5,7 +5,7 @@ use \PDO;
 
 class Post
 {   
-    public static $nbPostsByPage = 5;
+    public static $nbPostsByPage = 4;
     public static $currentPage = 1;
 
     public static function getLastEpisodes()
@@ -58,7 +58,7 @@ class Post
 
         for ($i=1; $i<=$nbPage; $i++)
         {
-            echo "<a href=\"index.php?page=posts.showAllEpisodes&p=$i\">$i</a> / ";
+            return "<a href=\"index.php?page=posts.showAllEpisodes&p=$i\">$i</a> / ";
         }
     }
 

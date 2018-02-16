@@ -9,7 +9,7 @@ class AdminController extends Controller
 {
 	public function index()
     {   
-        $auth = new \App\Model\Admin\Login(\App\App::getDb());
+        $auth = new Login(\App\App::getDb());
         if(!$auth->logged())
         {
             require('../app/Views/admin/login.php');

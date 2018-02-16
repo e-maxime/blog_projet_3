@@ -20,21 +20,24 @@ class PostsController extends Controller
         $this->loadModel('Post');
         $post = Post::getOneEpisode($_GET['id']);
 
+
         if($post === false)
         {
             $this->pageNotFound();
         }
         $this->loadModel('Comments');
+        $paging = Comments::paging();
         $comments = Comments::getComments();
         
-        $this->render('posts.single_episode', compact('post', 'comments'));
+        $this->render('posts.single_episode', compact('post', 'comments', 'paging'));
     }
     
     public function showAllEpisodes()
     {
         $this->loadModel('Post');
-        $posts = Post::getAllEpisodes();
         $paging = Post::paging();
-        $this->render('posts.episodes', compact('posts'));
+        $posts = Post::getAllEpisodes();
+        
+        $this->render('posts.episodes', compact('posts', 'paging'));
     }
 }
