@@ -11,9 +11,25 @@
     <div class="panel-heading">
         <h3 class="panel-title">Commentaires</h3>
     </div>
+    
+    <table>
     <?php foreach($comments as $comment): ?>
-    <div class="panel-body"><?php echo "<p>De " . $comment->nickname . " le " . $comment->date_publish_fr . " :</p><p>" . $comment->content . "</p>"; ?></div>
+        <tr>    
+            <td>
+                <div class="panel-body">
+            <?php echo "<p>De " . $comment->nickname . " le " . $comment->date_publish_fr . " : </p><p>" . $comment->content . "</p>"; ?>
+                </div>
+            </td>
+
+            <td>
+                <form method="POST", action="?page=comments.report&id=<?=$_GET['id'];?>">
+                    <input type="hidden" name="id" value="<?= $comment->id; ?>" />
+                    <button type="submit" name="report" class="btn btn-danger">Signaler</button>
+                </form>
+            </td>
+        </tr>
     <?php endforeach; ?>
+    </table>
     <?php echo $paging; ?>
 </div>
 

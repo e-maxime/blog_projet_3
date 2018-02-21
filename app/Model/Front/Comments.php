@@ -17,32 +17,16 @@ class Comments
             ORDER BY date_publish LIMIT ".((self::$currentPage-1)*self::$nbCommentsByPage).",".self::$nbCommentsByPage, [$_GET['id']], __CLASS__);
     }
 
-    public function addComment()
+    public static function addComment()
     {
-        $bdd = new PDO('mysql:dbname=projet_blog;host=localhost', 'root', 'root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-        
-        $req = $bdd->prepare('INSERT INTO comments(post_id, nickname, content, date_publish) VALUES (?, ?, ?, NOW())');
-        
-        $req->execute(array($_GET['id'], htmlspecialchars($_POST['pseudo']), htmlspecialchars($_POST['comment'])));
-        
-        if ($req === false) 
-        {
-            throw new Exception('Impossible d\'ajouter le commentaire. Veuillez réessayer.');
-        }
-        else 
-        {
-            header('Location: index.php?page=posts.show&id=' . $_GET['id']);
-        } 
+        App::getDb()->insert("
+            INSERT INTO comments(post_id, nickname, content, date_publish) 
+            VALUES (?, ?, ?, NOW())", array($_GET['id'], htmlspecialchars($_POST['pseudo']), htmlspecialchars($_POST['comment'])));
     }
 
     public static function counting()
     {
-        $bdd = new PDO('mysql:dbname=projet_blog;host=localhost', 'root', 'root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-
-        $req = $bdd->query('SELECT COUNT(id) AS nbComments FROM comments');
-        $data = $req->fetch();
-        $nbComments = $data['nbComments'];
-        return $nbComments;
+        return App::getDb()->counter('SELECT COUNT(id) AS nbThings FROM comments WHERE post_id = ?', [$_GET['id']]);
     }
 
     public static function paging()
@@ -59,10 +43,18 @@ class Comments
             self::$currentPage = 1;
         }
 
+        $html="";
+
         for ($i=1; $i<=$nbPage; $i++)
         {
-           return "<a href=\"index.php?page=posts.show&id=".$_GET['id']."&p=$i\">$i</a> / ";
+            $html .="<a href=\"index.php?page=posts.show&id=".$_GET['id']."&p=$i\">$i</a> / ";
         }
+        return $html;
+    }
+
+    public static function reportComment()
+    {
+        return App::getDb()->update("UPDATE comments SET reported = 1 WHERE id = ?", array($_POST['id']));
     }
 
 }

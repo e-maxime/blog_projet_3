@@ -1,5 +1,6 @@
 <?php
 namespace App\Controller\Front;
+use \App\Model\Front\Comments;
 
 class CommentsController extends Controller
 {
@@ -10,8 +11,8 @@ class CommentsController extends Controller
             if(!empty($_POST['pseudo']) && !empty($_POST['comment']))
             {
                 $this->loadModel('Comments');
-                $addPostComment = new \App\Model\Front\Comments();
-                $addPostComment->addComment();
+                $addPostComment = Comments::addComment();
+                header('Location:?page=posts.show&id='.$_GET['id']);
             }
             
             else
@@ -24,5 +25,19 @@ class CommentsController extends Controller
             echo "Aucun identifiant de billet n'a été envoyé.";
         }
     }
-    
+
+    public function report()
+    {
+        if(isset($_GET['id']) && $_GET['id'] > 0)
+        {  
+            $this->loadModel('Comments');
+            $report = Comments::reportComment();
+            header('Location:?page=posts.show&id='.$_GET['id']);
+        }
+
+        else
+        {
+            echo "Aucun identifiant de billet n'a été envoyé.";
+        }
+    }
 }

@@ -34,12 +34,7 @@ class Post
 
     public static function counting()
     {
-        $bdd = new PDO('mysql:dbname=projet_blog;host=localhost', 'root', 'root', array(PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION));
-
-        $req = $bdd->query('SELECT COUNT(id) AS nbPosts FROM posts');
-        $data = $req->fetch();
-        $nbPosts = $data['nbPosts'];
-        return $nbPosts;
+        return App::getDb()->counter('SELECT COUNT(id) AS nbThings FROM posts');
     }
 
     public static function paging()
@@ -56,10 +51,13 @@ class Post
             self::$currentPage = 1;
         }
 
+        $html="";
+
         for ($i=1; $i<=$nbPage; $i++)
         {
-            return "<a href=\"index.php?page=posts.showAllEpisodes&p=$i\">$i</a> / ";
+            $html .="<a href=\"index.php?page=posts.showAllEpisodes&p=$i\">$i</a> / ";
         }
+        return $html;
     }
 
     

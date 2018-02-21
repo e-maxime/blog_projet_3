@@ -78,4 +78,59 @@ class Database
         }
         return $data;
     }
+
+    public function insert($statement, $attributes)
+    {
+        $req = $this->getDb()->prepare($statement);
+        $req->execute($attributes);
+
+        if($req === false)
+        {
+            throw new Exception('Impossible d\'ajouter l\'élément. Veuillez réessayer.');
+        }
+        else 
+        {
+            //header('Location: ');
+        }
+    }
+
+    public function counter($statement, $attributes=null)
+    {
+        if($attributes === null)
+        {
+            $req = $this->getDb()->query($statement);
+            $data = $req->fetch();
+            $nbThings = $data['nbThings'];
+            return $nbThings;
+        }
+        elseif ($attributes) {
+            $req = $this->getDb()->prepare($statement);
+            $req->execute($attributes);
+            $data = $req->fetch();
+            $nbThings = $data['nbThings'];
+            return $nbThings;
+        }
+        
+    }
+
+    public function simplePrepare($statement, $attributes)
+    {
+        $req = $this->getDb()->prepare($statement);
+        $req->execute($attributes);
+        
+        $data = $req->fetch();
+        return $data;
+    }
+
+    public function update($statement, $attributes)
+    {
+        $req = $this->getDb()->prepare($statement);
+        $req->execute($attributes); 
+    }
+
+    public function delete($statement, $attributes)
+    {
+        $req = $this->getDb()->prepare($statement);
+        $req->execute($attributes);
+    }
 }

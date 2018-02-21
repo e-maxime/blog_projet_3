@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" type="text/css" href="css/bootstrap/css/bootstrap.css">
     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+    <script>tinymce.init({ selector:'textarea' });</script>
 </head>
 <body>
     <div class="container">
@@ -19,9 +21,9 @@
         <div class="row">
             <nav class="navbar navbar-inverse">
                 <ul class="nav navbar-nav">
-                    <li><a href="admin.php?page=admin.index">Tableau de bord</a></li>
-                    <li><a href="admin.php?page=admin.allEpisodes">Épisodes</a></li>
-                    <li><a href="admin.php?page=admin.allComments">Commentaires</a></li>
+                    <li><a href="index.php?page=admin.index">Tableau de bord</a></li>
+                    <li><a href="index.php?page=admin.allEpisodes">Épisodes</a></li>
+                    <li><a href="index.php?page=admin.allComments">Commentaires</a></li>
                 </ul>
             </nav>
         </div>
@@ -34,7 +36,7 @@
             <footer>
                 <nav class="navbar navbar-inverse">
                     <ul class="nav navbar-nav">
-                        <li><a href="admin.php?page=admin.disconnect">Se déconnecter</a></li>
+                        <li><a href="index.php?page=admin.disconnect">Se déconnecter</a></li>
                     </ul>
                 </nav>
             </footer>

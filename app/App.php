@@ -30,4 +30,10 @@ class App
     {
         self::$_titlePage = $pageTitle . ' | ' . self::$_titlePage;
     }
+
+    public static function pageNotFound()
+    {
+        header("HTTP/1.0 404 Not Found");
+        header('Page introuvable.');
+    }
 }

@@ -26,7 +26,7 @@
         </div>
         
         <div class="row">
-			<form method="POST" action="admin.php?page=admin.getLog" class="col-lg-6">
+			<form method="POST" action="index.php?page=admin.getLog" class="col-lg-6">
 				<legend>Connexion</legend>
 					<div class="form-group">
 						<label>Nom d'utilisateur : </label>
@@ -44,7 +44,7 @@
             <footer>
                 <nav class="navbar navbar-inverse">
                     <ul class="nav navbar-nav">
-                        <li><a href="#">Se connecter</a></li>
+                        <li><a href="index.php?page=admin.login">Se connecter</a></li>
                     </ul>
                 </nav>
             </footer>

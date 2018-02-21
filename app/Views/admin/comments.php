@@ -16,7 +16,10 @@
 			<td><?= $comment->content; ?></td>
 			<td><?= $comment->nickname . "<br/>Le " . $comment->date_publish_fr; ?></td>
 			<td>
-				<a href="#"><button class="btn btn-danger">Supprimer</button></a>
+				<form method="POST", action="?page=admin.deleteComment">
+               <input type="hidden" name="id" value="<?= $comment->id; ?>" />
+               <button type="submit" name="supprimer" class="btn btn-danger">Supprimer</button>
+            </form>
 			</td>
 		</tr>
 	<?php endforeach; ?>
