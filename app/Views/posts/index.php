@@ -1,7 +1,7 @@
 <div class="row">
             <blockquote class="col-lg-8">
                 Bienvenue, vous retrouverez sur le site tous les épisodes de mon livre "Un billet simple pour l'Alaska".<br/>
-                N'hésitez pas à laisser vos impressions sur les épisodes via l'espace des commentaires ou par le <a href="index.php?page=contact">formulaire de contact</a>, elles me permettront d'améliorer l'histoire.<br/>
+                N'hésitez pas à laisser vos impressions sur les épisodes via l'espace des commentaires sur chaque épisode, elles me permettront d'améliorer l'histoire.<br/>
                 Bonne lecture à tous !
             </blockquote>
             
