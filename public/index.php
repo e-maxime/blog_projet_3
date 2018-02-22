@@ -17,6 +17,8 @@ else
 $page = explode('.', $page);
 $action = $page[1];
 
+//$table['home'=>'posts.index', 'episodes'=>'posts.showAllEpisodes', 'episode'=>'posts.show'];
+
 if ($page[0] === 'posts' || $page[0] === 'comments') 
 {
 	$controller = '\App\Controller\Front\\' . ucfirst($page[0]) . 'Controller';
@@ -51,4 +53,7 @@ else
 	\App\App::pageNotFound();	
 }
 
+echo "<pre>";
+var_dump($_SERVER);
+echo "</pre";
 

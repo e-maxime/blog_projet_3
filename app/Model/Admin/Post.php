@@ -34,17 +34,6 @@ class Post
 
     public static function deleted()
     {
-        $delete = App::getDb()->delete("DELETE FROM posts WHERE id = ? ", array($_POST['id']));
-
-        if($delete)
-        {
-            App::getDb()->delete("DELETE FROM comments WHERE post_id = ?", array($_POST['id']));
-        }
-
-        else
-        {
-            var_dump($_POST['id']); die('Erreur lors de la suppression des éléments.');
-        }
-
+        return App::getDb()->delete("DELETE posts, comments FROM posts INNER JOIN comments WHERE posts.id = comments.post_id AND posts.id = ?", array($_POST['id']));
     }
 }
