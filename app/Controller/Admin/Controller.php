@@ -5,17 +5,21 @@ class Controller
 {
     protected $viewPath = '../app/Views/';
     protected $template = 'adminDefault';
-    
+    protected $auth;
+
     protected function render($view, $variables=[])
     {
         ob_start();
         extract($variables);
         require ($this->viewPath . str_replace('.', '/', $view) . '.php');
         $content = ob_get_clean();
-        if($view === 'admin.login')
+
+        $auth = new \App\Model\Admin\Login(\App\App::getDb());
+        if(!$auth->logged())
         {
-            require($this->viewPath . str_replace('.', '/', $view) . '.php');
+            require($this->viewPath . str_replace('.', '/', 'admin.login') . '.php');
         }
+        
         else
         {
             require($this->viewPath . 'templates/'. $this->template . '.php');

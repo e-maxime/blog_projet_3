@@ -23,7 +23,7 @@ class PostsController extends Controller
 
         if($post === false)
         {
-            $this->pageNotFound();
+            die("Aucun épisode trouvé.");
         }
         $this->loadModel('Comments');
         $paging = Comments::paging();

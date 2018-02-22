@@ -20,7 +20,7 @@ class Controller
         require('../app/Model/Front/'. $model_name . ".php");
     }
     
-    protected static function pageNotFound()
+    protected function pageNotFound()
     {
         header("HTTP/1.0 404 Not Found");
         header('Location: index.php?page=404');

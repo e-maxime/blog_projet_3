@@ -46,6 +46,10 @@ class Post
         {
             self::$currentPage = $_GET['p'];
         }
+        elseif($_GET['p'] > $nbPage)
+        {
+            die('Cette page n\'existe pas.');
+        }
         else
         {
             self::$currentPage = 1;

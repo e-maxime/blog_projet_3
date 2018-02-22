@@ -7,70 +7,37 @@ use \App\Model\Admin\Login;
 
 class AdminController extends Controller
 {
-    public function __construct()
-    {
-    
-    }
-
 	public function index()
     {   
-        $auth = $this->_auth = new Login(\App\App::getDb());
-        if(!$auth->logged())
-        {
-            $this->render('admin.login');
-        }
-        else
-        {
-            $this->loadModel('Comments');
-            $comments = Comments::getReportedComments();
-            $this->render('admin.index', compact('comments'));
-        }
-
+        $this->loadModel('Comments');
+        $comments = Comments::getReportedComments();
+        $this->render('admin.index', compact('comments'));
     }
 
     public function allEpisodes()
     {
-        $auth = $this->_auth = new Login(\App\App::getDb());
-        if(!$auth->logged())
-        {
-            $this->render('admin.login');
-        }
-        else
-        {
-            $this->loadModel('Post');
-            $posts = Post::getAllEpisodes();
-            $this->render('admin.episodes', compact('posts'));
-        }
+        $this->loadModel('Post');
+        $posts = Post::getAllEpisodes();
+        $this->render('admin.episodes', compact('posts'));
     }
 
     public function allComments()
     {
-        $auth = $this->_auth = new Login(\App\App::getDb());
-        if(!$auth->logged())
-        {
-            $this->render('admin.login');
-        }
-        else
-        {
-            $this->loadModel('Comments');
-            $comments = Comments::getAllComments();
-            $this->render('admin.comments', compact('comments'));
-        }
-        
+        $this->loadModel('Comments');
+        $comments = Comments::getAllComments();
+        $this->render('admin.comments', compact('comments')); 
     }
 
     public function login()
     {
-        $auth = $this->_auth = new Login(\App\App::getDb());
-        if(!$auth->logged())
+        if($this->auth)
         {
-            $this->render('admin.login');
+            $this->render('admin.index');
         }
         else
         {
-            $this->render('admin.index');    
+            $this->render('admin.login');    
         }
-        
     }
 
     public function getLog()
@@ -90,127 +57,72 @@ class AdminController extends Controller
             else
             {
                 $_SESSION['auth'] = $log['id'];
-                $this->render('admin.index');
-                
-                
+                header('Location: index.php?page=admin.index');   
             }
         }
         else
-        {?>
-            <div class="alert alert-info">Tous les champs ne sont pas remplis.</div>
-        <?php }
+        {
+        ?>
+            <div class="alert alert-warning">Tous les champs ne sont pas remplis.</div>
+        <?php
+            $this->render('admin.login');
+        }
         
     }
 
     public function edit()
     {
-        $auth = $this->_auth = new Login(\App\App::getDb());
-        if(!$auth->logged())
-        {
-            $this->render('admin.login');
-        }
-        else
-        {
-            $this->loadModel('Post');
-            $post = Post::getOneEpisode($_GET['id']);
-            $this->render('admin.edit', compact('post'));
-        }
+        $this->loadModel('Post');
+        $post = Post::getOneEpisode($_GET['id']);
+        $this->render('admin.edit', compact('post'));
     }
 
     public function editing()
     {
-        $auth = $this->_auth = new Login(\App\App::getDb());
-        if(!$auth->logged())
-        {
-            $this->render('admin.login');
-        }
-        else
-        {
-            $this->loadModel('Post');
-            $update = Post::updatePost();
-            header('location:index.php?page=admin.allEpisodes');
-            ?>
-            <div class="alert alert-success">L'article a bien été modifié.</div>
-            <?php
-        }
+        $this->loadModel('Post');
+        $update = Post::updatePost();
+        header('location:index.php?page=admin.allEpisodes');
+        ?>
+        <div class="alert alert-success">L'article a bien été modifié.</div>
+        <?php
     }
 
     public function deletePost()
     {
-        $auth = $this->_auth = new Login(\App\App::getDb());
-        if(!$auth->logged())
-        {
-            $this->render('admin.login');
-        }
-        else
-        {
-            $this->loadModel('Post');
-            $delete = Post::deleted();
-            header('location:index.php?page=admin.allEpisodes');
-        }
+        $this->loadModel('Post');
+        $delete = Post::deleted();
+        header('location:index.php?page=admin.allEpisodes');
     }
 
     public function deleteComment()
     {
-        $auth = $this->_auth = new Login(\App\App::getDb());
-        if(!$auth->logged())
-        {
-            $this->render('admin.login');
-        }
-        else
-        {
-            $this->loadModel('Comments');
-            $delete = Comments::deleted();
-            header('location:index.php?page=admin.allComments');
-        }
+        $this->loadModel('Comments');
+        $delete = Comments::deleted();
+        header('location:index.php?page=admin.allComments');
     }
 
     public function add()
     {
-        $auth = $this->_auth = new Login(\App\App::getDb());
-        if(!$auth->logged())
-        {
-            $this->render('admin.login');
-        }
-        else
-        {
-            $this->render('admin.add');
-        }
+        $this->render('admin.add');
     }
 
     public function adding()
     {
-        $auth = $this->_auth = new Login(\App\App::getDb());
-        if(!$auth->logged())
-        {
-            $this->render('admin.login');
-        }
-        else
-        {
-            $this->loadModel('Post');
-            $delete = Post::addPost();
-            header('location:index.php?page=admin.allEpisodes');
-        }
+        $this->loadModel('Post');
+        $delete = Post::addPost();
+        header('location:index.php?page=admin.allEpisodes');
     }
 
     public function remove()
     {
-        $auth = $this->_auth = new Login(\App\App::getDb());
-        if(!$auth->logged())
-        {
-            $this->render('admin.login');
-        }
-        else
-        {
-            $this->loadModel('Comments');
-            $remove = Comments::removeComments();
-            header('location:index.php?page=admin.index');
-        }
+        $this->loadModel('Comments');
+        $remove = Comments::removeComments();
+        header('location:index.php?page=admin.index');
     }
 
     public function disconnect()
     {
         session_destroy();
-        $this->render('admin.login');
+        header('Location: index.php?page=admin.login');
     }
 }

@@ -6,7 +6,7 @@ require('../app/Autoloader.php');
 
 if(isset($_GET['page']))
 {
-    $page = $_GET['page'];
+	$page = $_GET['page'];
 }
 
 else
@@ -14,10 +14,10 @@ else
     $page = 'posts.index';
 }
 
-	$page = explode('.', $page);
-	$action = $page[1];
+$page = explode('.', $page);
+$action = $page[1];
 
-	if ($page[0] === 'posts' || $page[0] === 'comments') 
+if ($page[0] === 'posts' || $page[0] === 'comments') 
 {
 	$controller = '\App\Controller\Front\\' . ucfirst($page[0]) . 'Controller';
 
@@ -28,8 +28,7 @@ else
 	}
 	else
 	{
-		die('Page introuvable');
-		// \App\App::pageNotFound();
+		\App\App::pageNotFound();
 	}
 }
 
@@ -43,14 +42,13 @@ elseif($page[0] === 'admin')
 	}
 	else
 	{
-		die('Page introuvable');
-		// \App\App::pageNotFound();
+		\App\App::pageNotFound();
 	}
 }
 
-else{
-	die('Page introuvable');
-	// \App\App::pageNotFound();	
+else
+{
+	\App\App::pageNotFound();	
 }
 
 
