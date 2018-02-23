@@ -1,2 +1,0 @@
-#RewriteEngine on
-#RewriteRule index/home index.php?page=posts.index

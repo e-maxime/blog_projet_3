@@ -1,5 +1,5 @@
 <?php \App\App::setTitlePage($post->title); ?>
-<div class="container">
+
     <div class="row">
         <div class="col-lg-8 col-lg-offset-2">
             <div class="panel panel-primary">
@@ -68,7 +68,7 @@
             </form>
         </div>
     </div>
-</div>
+
     
 
 

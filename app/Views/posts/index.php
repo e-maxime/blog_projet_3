@@ -1,4 +1,3 @@
-<div class="container">
     <div class="row">
         <blockquote class="col-lg-8">
             Bienvenue, vous retrouverez sur le site tous les épisodes de mon livre "Un billet simple pour l'Alaska".<br/>
@@ -24,7 +23,7 @@
             <?php endforeach; ?>
         </div>    
     </div>
-</div>
+
 
 
 
