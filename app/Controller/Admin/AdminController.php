@@ -57,7 +57,7 @@ class AdminController extends Controller
             else
             {
                 $_SESSION['auth'] = $log['id'];
-                header('Location: index.php?page=admin.index');   
+                header('Location: dashboard');   
             }
         }
         else

@@ -1,4 +1,4 @@
-
+<div clas="container">
 	<div class="row">
 		<div class="col-lg-10 col-lg-offset-1">
 
@@ -19,3 +19,4 @@
 
 		</div>
 	</div>
+</div>

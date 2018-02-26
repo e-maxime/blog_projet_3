@@ -51,7 +51,7 @@ class Comments
 
         for ($i=1; $i<=$nbPage; $i++)
         {
-            $html .="<a href=\"index.php?page=posts.show&id=".$_GET['id']."&p=$i\">$i</a>";
+            $html .="<a href=\"episode&id=".$_GET['id']."&p=$i\">$i</a>";
         }
         return $html;
     }

@@ -59,7 +59,7 @@ class Post
 
         for ($i=1; $i<=$nbPage; $i++)
         {
-            $html .="<a href=\"index.php?page=posts.showAllEpisodes&p=$i\">$i</a> ";
+            $html .="<a href=\"index.php?page=showAllEpisodes&p=$i\">$i</a> ";
         }
         return $html;
     }
@@ -67,7 +67,7 @@ class Post
     
     public function getUrl()
     {
-        return 'index.php?page=posts.show&id=' . $this->id;
+        return '?page=posts.show&id=' . $this->id;
     }
     
     public function getExcerpt()
