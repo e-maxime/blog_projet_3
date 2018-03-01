@@ -2,3 +2,4 @@ RewriteEngine on
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^.*$ index.php [L,QSA]
+RewriteRule episodes/([0-9]+) index.php?page=posts.showAllEpisodes&p=$1
