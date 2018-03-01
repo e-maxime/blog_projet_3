@@ -17,9 +17,6 @@ else
 $page = explode('.', $page);
 $action = $page[1];*/
 
-
-
-
 $table = [
 	'' => 'Front\Posts.index',
 	'home' => 'Front\Posts.index',

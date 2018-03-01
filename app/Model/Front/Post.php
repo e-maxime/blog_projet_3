@@ -67,7 +67,8 @@ class Post
     
     public function getUrl()
     {
-        return '?page=posts.show&id=' . $this->id;
+        //return '?page=posts.show&id=' . $this->id;
+        return 'episode' . $this->id;
     }
     
     public function getExcerpt()

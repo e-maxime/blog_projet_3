@@ -21,7 +21,7 @@
             <nav class="navbar navbar-inverse">
                 <ul class="nav navbar-nav">
                     <li><a href="home">Accueil</a></li>
-                    <li><a href="index.php?page=posts.showAllEpisodes&p=1">Les épisodes</a></li>
+                    <li><a href="episodes&p=1">Les épisodes</a></li>
                 </ul>
             </nav>
         </div>
