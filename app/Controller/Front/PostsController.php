@@ -3,6 +3,7 @@ namespace App\Controller\Front;
 
 use \App\Model\Front\Post;
 use \App\Model\Front\Comments;
+use \App\Controller\Controller;
 
 class PostsController extends Controller
 {   

@@ -34,6 +34,11 @@ class Comments
         $nbComments = self::counting();
         $nbPage = ceil($nbComments/self::$nbCommentsByPage);
 
+        if(!isset($_GET['p']))
+        {
+            $_GET['p']=1;
+        }
+
         if(isset($_GET['p']) && $_GET['p']>0 && $_GET['p']<=$nbPage)
         {
             self::$currentPage = $_GET['p'];
@@ -47,13 +52,13 @@ class Comments
             self::$currentPage = 1;
         }
 
-        $html="";
+        $pagination="";
 
         for ($i=1; $i<=$nbPage; $i++)
         {
-            $html .="<a href=\"episode&id=".$_GET['id']."&p=$i\">$i</a>";
+            $pagination .="<a href=\"episode?id=".$_GET['id']."&p=$i\">$i</a>";
         }
-        return $html;
+        return $pagination;
     }
 
     public static function reportComment()

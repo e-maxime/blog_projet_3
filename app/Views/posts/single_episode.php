@@ -29,7 +29,7 @@
                     </td>
 
                     <td>
-                        <form method="POST", action="?page=comments.report&id=<?=$_GET['id'];?>">
+                        <form method="POST", action="report?id=<?=$_GET['id'];?>">
                             <input type="hidden" name="id" value="<?= $comment->id; ?>" />
                             <button type="submit" name="report" class="btn btn-link" style="color:red;">Signaler</button>
                         </form>
@@ -54,7 +54,7 @@
 
     <div class="row">
         <div class="col-lg-10">
-            <form class="well col-lg-6" action="index.php?page=comments.checkInsertComment&id=<?= $_GET['id']; ?>" method="post">
+            <form class="well col-lg-6" action="insertComment?id=<?= $_GET['id']; ?>" method="post">
             <legend>Commentaire</legend>
                 <div class="form-group">
                     <label for="text">Pseudonyme : </label>

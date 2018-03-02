@@ -42,6 +42,11 @@ class Post
         $nbPosts = self::counting();
         $nbPage = ceil($nbPosts/self::$nbPostsByPage);
 
+        if(!isset($_GET['p']))
+        {
+            $_GET['p'] = 1;
+        }
+
         if(isset($_GET['p']) && $_GET['p']>0 && $_GET['p']<=$nbPage)
         {
             self::$currentPage = $_GET['p'];
@@ -55,20 +60,19 @@ class Post
             self::$currentPage = 1;
         }
 
-        $html="";
+        $pagination="";
 
         for ($i=1; $i<=$nbPage; $i++)
         {
-            $html .="<a href=\"index.php?page=showAllEpisodes&p=$i\">$i</a> ";
+            $pagination .="<a href=\"episodes?p=$i\">$i</a> ";
         }
-        return $html;
+        return $pagination;
     }
 
     
     public function getUrl()
     {
-        //return '?page=posts.show&id=' . $this->id;
-        return 'episode' . $this->id;
+        return 'episode?id=' . $this->id;
     }
     
     public function getExcerpt()

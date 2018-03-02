@@ -4,9 +4,23 @@ namespace App\Controller\Admin;
 use \App\Model\Admin\Post;
 use \App\Model\Admin\Comments;
 use \App\Model\Admin\Login;
+use \App\Controller\Controller;
 
 class AdminController extends Controller
 {
+    public function __construct()
+    {
+        $auth = new \App\Model\Admin\Login();
+        $path = str_replace('/Projet_3/public/', '', $_SERVER['REQUEST_URI']);
+        $path = parse_url($path, PHP_URL_PATH);
+        $path = rtrim($path, '/');
+
+        if(!$auth->logged() && $path != 'login')
+        {
+            header('Location: login');
+        }
+    }
+
 	public function index()
     {   
         $this->loadModel('Comments');
@@ -32,7 +46,7 @@ class AdminController extends Controller
     {
         if($this->auth)
         {
-            $this->render('admin.index');
+            header('Location: dashboard');
         }
         else
         {
@@ -91,14 +105,14 @@ class AdminController extends Controller
     {
         $this->loadModel('Post');
         $delete = Post::deleted();
-        header('location:index.php?page=admin.allEpisodes');
+        header('location:adminEpisodes');
     }
 
     public function deleteComment()
     {
         $this->loadModel('Comments');
         $delete = Comments::deleted();
-        header('location:index.php?page=admin.allComments');
+        header('location: adminComments');
     }
 
     public function add()
@@ -110,19 +124,19 @@ class AdminController extends Controller
     {
         $this->loadModel('Post');
         $delete = Post::addPost();
-        header('location:index.php?page=admin.allEpisodes');
+        header('location: adminEpisodes');
     }
 
     public function remove()
     {
         $this->loadModel('Comments');
         $remove = Comments::removeComments();
-        header('location:index.php?page=admin.index');
+        header('location: dashboard');
     }
 
     public function disconnect()
     {
         session_destroy();
-        header('Location: index.php?page=admin.login');
+        header('Location: login');
     }
 }

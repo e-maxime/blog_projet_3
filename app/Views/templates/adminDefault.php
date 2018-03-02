@@ -21,9 +21,9 @@
         <div class="row">
             <nav class="navbar navbar-inverse">
                 <ul class="nav navbar-nav">
-                    <li><a href="index.php?page=admin.index">Tableau de bord</a></li>
-                    <li><a href="index.php?page=admin.allEpisodes">Épisodes</a></li>
-                    <li><a href="index.php?page=admin.allComments">Commentaires</a></li>
+                    <li><a href="dashboard">Tableau de bord</a></li>
+                    <li><a href="adminEpisodes">Épisodes</a></li>
+                    <li><a href="adminComments">Commentaires</a></li>
                 </ul>
             </nav>
         </div>
@@ -36,7 +36,7 @@
             <footer>
                 <nav class="navbar navbar-inverse">
                     <ul class="nav navbar-nav">
-                        <li><a href="index.php?page=admin.disconnect">Se déconnecter</a></li>
+                        <li><a href="disconnect">Se déconnecter</a></li>
                     </ul>
                 </nav>
             </footer>

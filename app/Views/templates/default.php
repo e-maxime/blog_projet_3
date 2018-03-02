@@ -10,35 +10,32 @@
     <link rel="stylesheet" type="text/css" href="/Projet_3/public/css/style.css">
 </head>
 <body>
-    <div class="container">
-        <div class="row">
-            <header class="page-header">
-                <h1>Un billet simple pour l'Alaska - Jean FORTEROCHE</h1>
-            </header>
+    <nav class="navbar navbar-inverse" style="border-radius: 0; background-color: #343a40; border: 0; margin-bottom: 0;">
+        <ul class="nav navbar-nav">
+            <li><a href="home">Accueil</a></li>
+            <li><a href="episodes">Les épisodes</a></li>
+        </ul>
+    </nav>
+    
+    <header style="background-color: #007bff; height: 150px;">
+        <div class="container" style="padding-top: 30px;">
+            <h1 style="color: white; text-align: center;">Un billet simple pour l'Alaska - Jean FORTEROCHE</h1>
         </div>
-        
-        <div class="row">
-            <nav class="navbar navbar-inverse">
-                <ul class="nav navbar-nav">
-                    <li><a href="home">Accueil</a></li>
-                    <li><a href="episodes&p=1">Les épisodes</a></li>
-                </ul>
-            </nav>
+    </header>
+
+    <section style="padding-top: 100px;">
+        <div>
+                <?= $content; ?>
         </div>
-        
-        <div class="row">
-            <?= $content; ?>
-        </div>
-        
-        <div class="row">
-            <footer>
-                <nav class="navbar navbar-inverse">
-                    <ul class="nav navbar-nav">
-                        <li><a href="login">Se connecter</a></li>
-                    </ul>
-                </nav>
-            </footer>
-        </div>
-    </div>
+    </section>
+
+    <footer>
+        <nav class="navbar navbar-inverse" style="border-radius: 0; background-color: #343a40; border: 0; margin-bottom: 0;">
+            <ul class="nav navbar-nav">
+                <li><a href="login">Se connecter</a></li>
+            </ul>
+        </nav>
+    </footer>
+
 </body>
 </html>

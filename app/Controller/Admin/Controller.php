@@ -14,16 +14,16 @@ class Controller
         require ($this->viewPath . str_replace('.', '/', $view) . '.php');
         $content = ob_get_clean();
 
-        $auth = new \App\Model\Admin\Login(\App\App::getDb());
-        if(!$auth->logged())
+       
+        /*if()
         {
             require($this->viewPath . str_replace('.', '/', 'admin.login') . '.php');
         }
         
         else
-        {
+        {*/
             require($this->viewPath . 'templates/'. $this->template . '.php');
-        }
+        /*}*/
     }
 
     protected function loadModel($model_name)
@@ -40,6 +40,6 @@ class Controller
     protected function forbidden()
     {
         header('HTTP/1.0 403 Forbidden');
-        die('Accès interdit. <a href="index.php?posts.index">Retour à l\'accueil</a><br/><a href="index.php?admin.login">Se connecter à l\'espace d\'administration</a>');
+        die('Accès interdit. <a href="home">Retour à l\'accueil</a><br/><a href="login">Se connecter à l\'espace d\'administration</a>');
     }
 }

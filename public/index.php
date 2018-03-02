@@ -4,19 +4,6 @@ session_start();
 require('../app/Autoloader.php');
 \App\Autoloader::register();
 
-/*if(isset($_GET['page']))
-{
-	$page = $_GET['page'];
-}
-
-else
-{
-    $page = 'posts.index';
-}
-
-$page = explode('.', $page);
-$action = $page[1];*/
-
 $table = [
 	'' => 'Front\Posts.index',
 	'home' => 'Front\Posts.index',
@@ -24,10 +11,23 @@ $table = [
 	'episode' => 'Front\Posts.show',
 	'login' => 'Admin\Admin.login',
 	'connection' => 'Admin\Admin.getLog',
-	'dashboard' => 'Admin\Admin.index'
+	'dashboard' => 'Admin\Admin.index',
+	'adminEpisodes' => 'Admin\Admin.allEpisodes',
+	'adminComments' => 'Admin\Admin.allComments',
+	'report' => "Front\Comments.report",
+	'disconnect' => "Admin\Admin.disconnect",
+	'deleteComment' => "Admin\Admin.deleteComment",
+	'insertComment' => 'Front\Comments.checkInsertComment',
+	'addEpisode' => 'Admin\Admin.adding',
+	'editEpisode' => 'Admin\Admin.editing',
+	'adminAddNewEpisode' => 'Admin\Admin.add',
+	'adminEditEpisode' => 'Admin\Admin.edit',
+	'deleteEpisode' => 'Admin\Admin.deletePost',
+	'removeEpisode' => 'Admin\Admin.remove'
 ];
 
 $path = str_replace('/Projet_3/public/', '', $_SERVER['REQUEST_URI']);
+$path = parse_url($path, PHP_URL_PATH);
 $path = rtrim($path, '/');
 
 if (array_key_exists($path, $table)) {
@@ -46,43 +46,3 @@ if (array_key_exists($path, $table)) {
 		\App\App::pageNotFound();
 	}
 }
-
-
-/* if ($page[0] === 'posts' || $page[0] === 'comments') 
-{
-	$controller = '\App\Controller\Front\\' . ucfirst($page[0]) . 'Controller';
-
-	$controller = new $controller();
-	if(method_exists($controller, $action))
-	{
-		$controller->$action();	
-	}
-	else
-	{
-		\App\App::pageNotFound();
-	}
-}
-
-elseif($page[0] === 'admin')
-{
-	$controller = '\App\Controller\Admin\\' . ucfirst($page[0]) . 'Controller';
-	$controller = new $controller();
-	if(method_exists($controller, $action))
-	{
-		$controller->$action();	
-	}
-	else
-	{
-		\App\App::pageNotFound();
-	}
-}
-
-else
-{
-	\App\App::pageNotFound();	
-}*/
-
-//echo "<pre>";
-//var_dump($_SERVER);
-//echo "</pre";
-

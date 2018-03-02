@@ -1,6 +1,7 @@
 <?php
 namespace App\Controller\Front;
 use \App\Model\Front\Comments;
+use \App\Controller\Controller;
 
 class CommentsController extends Controller
 {
@@ -12,7 +13,7 @@ class CommentsController extends Controller
             {
                 $this->loadModel('Comments');
                 $addPostComment = Comments::addComment();
-                header('Location:?page=posts.show&id='.$_GET['id']);
+                header('Location: episode?id='.$_GET['id']);
             }
             
             else
@@ -32,7 +33,7 @@ class CommentsController extends Controller
         {  
             $this->loadModel('Comments');
             $report = Comments::reportComment();
-            header('Location:?page=posts.show&id='.$_GET['id']);
+            header('Location: episode?id='.$_GET['id']);
         }
 
         else

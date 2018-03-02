@@ -1,3 +1,5 @@
+<?php $template = 'default'; ?>
+
 <!DOCTYPE html>
 <html>
 <head>
