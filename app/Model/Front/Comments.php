@@ -43,7 +43,7 @@ class Comments
         {
             self::$currentPage = $_GET['p'];
         }
-        elseif(isset($_GET['p'])&& $_GET['p'] > $nbPage)
+        elseif($_GET['p'] > $nbPage)
         {
             die('Cette page n\'existe pas.');
         }

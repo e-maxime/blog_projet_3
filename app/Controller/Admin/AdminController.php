@@ -23,35 +23,25 @@ class AdminController extends Controller
 
 	public function index()
     {   
-        $this->loadModel('Comments');
         $comments = Comments::getReportedComments();
         $this->render('admin.index', compact('comments'));
     }
 
     public function allEpisodes()
     {
-        $this->loadModel('Post');
         $posts = Post::getAllEpisodes();
         $this->render('admin.episodes', compact('posts'));
     }
 
     public function allComments()
     {
-        $this->loadModel('Comments');
         $comments = Comments::getAllComments();
         $this->render('admin.comments', compact('comments')); 
     }
 
     public function login()
     {
-        if($this->auth)
-        {
-            header('Location: dashboard');
-        }
-        else
-        {
-            $this->render('admin.login');    
-        }
+        $this->render('admin.login');  
     }
 
     public function getLog()
@@ -62,10 +52,7 @@ class AdminController extends Controller
 
             if(!$log)
             {
-            ?>
-                <div class="alert alert-danger">Identifiants incorrects.</div>
-            <?php
-                $this->render('admin.login');
+                header('Location: login');
             }
 
             else
@@ -76,24 +63,19 @@ class AdminController extends Controller
         }
         else
         {
-        ?>
-            <div class="alert alert-warning">Tous les champs ne sont pas remplis.</div>
-        <?php
-            $this->render('admin.login');
+            header('Location: login');
         }
         
     }
 
     public function edit()
     {
-        $this->loadModel('Post');
         $post = Post::getOneEpisode($_GET['id']);
         $this->render('admin.edit', compact('post'));
     }
 
     public function editing()
     {
-        $this->loadModel('Post');
         $update = Post::updatePost();
         header('location:index.php?page=admin.allEpisodes');
         ?>
@@ -103,14 +85,12 @@ class AdminController extends Controller
 
     public function deletePost()
     {
-        $this->loadModel('Post');
         $delete = Post::deleted();
         header('location:adminEpisodes');
     }
 
     public function deleteComment()
     {
-        $this->loadModel('Comments');
         $delete = Comments::deleted();
         header('location: adminComments');
     }
@@ -122,14 +102,12 @@ class AdminController extends Controller
 
     public function adding()
     {
-        $this->loadModel('Post');
         $delete = Post::addPost();
         header('location: adminEpisodes');
     }
 
     public function remove()
     {
-        $this->loadModel('Comments');
         $remove = Comments::removeComments();
         header('location: dashboard');
     }

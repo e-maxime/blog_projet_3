@@ -10,7 +10,6 @@ class PostsController extends Controller
     //Liste les différents articles
     public function index()
     {
-        $this->loadModel('Post');
         $posts = Post::getLastEpisodes();
         $this->render('posts.index', compact('posts'));
     }
@@ -18,15 +17,12 @@ class PostsController extends Controller
     //Voir un article et ses commentaires
     public function show()
     {
-        $this->loadModel('Post');
         $post = Post::getOneEpisode($_GET['id']);
-
 
         if($post === false)
         {
             die("Aucun épisode trouvé.");
         }
-        $this->loadModel('Comments');
         $paging = Comments::paging();
         $comments = Comments::getComments();
         
@@ -35,7 +31,6 @@ class PostsController extends Controller
     
     public function showAllEpisodes()
     {
-        $this->loadModel('Post');
         $paging = Post::paging();
         $posts = Post::getAllEpisodes();
         

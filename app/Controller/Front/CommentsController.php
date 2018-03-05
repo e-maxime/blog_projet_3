@@ -11,7 +11,6 @@ class CommentsController extends Controller
         {
             if(!empty($_POST['pseudo']) && !empty($_POST['comment']))
             {
-                $this->loadModel('Comments');
                 $addPostComment = Comments::addComment();
                 header('Location: episode?id='.$_GET['id']);
             }
@@ -31,7 +30,6 @@ class CommentsController extends Controller
     {
         if(isset($_GET['id']) && $_GET['id'] > 0)
         {  
-            $this->loadModel('Comments');
             $report = Comments::reportComment();
             header('Location: episode?id='.$_GET['id']);
         }
