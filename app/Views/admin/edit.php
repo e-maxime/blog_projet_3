@@ -9,7 +9,7 @@
 				<label>Contenu </label>
 				<textarea name="contenu" class="form-control"><?= $post->content; ?></textarea>
 			</div>
-				<button class="btn btn-primary">Enregistrer</button>
+				<p><button class="btn btn-primary">Enregistrer</button><br/></p>
 	</form>
 </div>
         

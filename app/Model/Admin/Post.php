@@ -23,7 +23,7 @@ class Post
 
     public static function updatePost()
     {
-        return App::getDb()->update("UPDATE posts SET title = \"".htmlspecialchars($_POST['titre'])."\", content = \"".htmlspecialchars($_POST['contenu'])."\" WHERE id = ?", array($_GET['id']));
+        return App::getDb()->update("UPDATE posts SET title = \"".$_POST['titre']."\", content = \"".$_POST['contenu']."\" WHERE id = ?", array($_GET['id']));
 
     }
 
@@ -34,6 +34,14 @@ class Post
 
     public static function deleted()
     {
-        return App::getDb()->delete("DELETE posts, comments FROM posts INNER JOIN comments WHERE posts.id = comments.post_id AND posts.id = ?", array($_POST['id']));
+        $req = App::getDb()->prepare('SELECT posts.id FROM posts INNER JOIN comments ON posts.id = comments.post_id WHERE posts.id = ?', array($_POST['id']));
+
+        if($req)
+        {
+            return App::getDb()->delete("DELETE posts, comments FROM posts INNER JOIN comments ON posts.id = comments.post_id WHERE posts.id = ?", array($_POST['id']));
+        }
+        else{
+            return App::getDb()->delete("DELETE posts FROM posts WHERE posts.id = ?", array($_POST['id']));
+        }
     }
 }

@@ -34,16 +34,11 @@ class Comments
         $nbComments = self::counting();
         $nbPage = ceil($nbComments/self::$nbCommentsByPage);
 
-        if(!isset($_GET['p']))
-        {
-            $_GET['p']=1;
-        }
-
         if(isset($_GET['p']) && $_GET['p']>0 && $_GET['p']<=$nbPage)
         {
             self::$currentPage = $_GET['p'];
         }
-        elseif($_GET['p'] > $nbPage)
+        elseif(isset($_GET['p']) && $_GET['p'] > $nbPage)
         {
             die('Cette page n\'existe pas.');
         }

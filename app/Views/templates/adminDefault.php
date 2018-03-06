@@ -11,36 +11,30 @@
     <script>tinymce.init({ selector:'textarea' });</script>
 </head>
 <body>
-    <div class="container">
-        <div class="row">
-            <header class="page-header">
-                <h1>Administration</h1>
-            </header>
+
+    <nav class="navbar navbar-inverse" style="border-radius: 0; background-color: #343a40; border: 0; height: 90px; padding-top: 1%;">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="" style="font-size: 2em;">Adminnistration</a>
         </div>
-        
-        <div class="row">
-            <nav class="navbar navbar-inverse">
-                <ul class="nav navbar-nav">
-                    <li><a href="dashboard">Tableau de bord</a></li>
-                    <li><a href="adminEpisodes">Épisodes</a></li>
-                    <li><a href="adminComments">Commentaires</a></li>
-                </ul>
-            </nav>
-        </div>
-        
-        <div class="row">
+        <ul class="nav navbar-nav">
+            <li><a href="dashboard">Tableau de bord</a></li>
+            <li><a href="adminEpisodes">Épisodes</a></li>
+            <li><a href="adminComments">Commentaires</a></li>
+        </ul>
+    </nav>
+    
+    <section style="">
+        <div>
             <?= $content; ?>
         </div>
+    </section>
         
-        <div class="row">
-            <footer>
-                <nav class="navbar navbar-inverse">
-                    <ul class="nav navbar-nav">
-                        <li><a href="disconnect">Se déconnecter</a></li>
-                    </ul>
-                </nav>
-            </footer>
-        </div>
-    </div>
+    <footer>
+        <nav class="navbar navbar-inverse" style="border-radius: 0; background-color: #343a40; border: 0; margin-bottom: 0;">
+            <ul class="nav navbar-nav">
+                <li><a href="disconnect">Se déconnecter</a></li>
+            </ul>
+        </nav>
+    </footer>
 </body>
 </html>

@@ -1,5 +1,7 @@
-<h1>Tableau de bord</h1>
-<table class="table table-bordered table-striped table-dark">
+<div class="page-header">
+	<h1 style="margin-left: 2%;">Tableau de bord</h1>
+</div>
+<table class="table table-bordered table-striped table-dark" style="width: 60%; margin:auto;">
 	<caption>
 		<h4>Commentaires signalés</h4>
 	</caption>

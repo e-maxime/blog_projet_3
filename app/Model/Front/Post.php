@@ -77,6 +77,6 @@ class Post
     
     public function getExcerpt()
     {
-        return substr($this->content, 0, 350) . "...<br/>" . '<a href="'.$this->getUrl().'">Lire la suite</a>';
+        return substr($this->content, 0, 350) . "...<br/>" . '<a href="'.$this->getUrl().'" style="color: #1C5B8E; font-size:0.9em;">Lire la suite</a>';
     }
 }

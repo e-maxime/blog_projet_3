@@ -19,6 +19,10 @@ class AdminController extends Controller
         {
             header('Location: login');
         }
+        elseif($auth->logged() & $path === 'login')
+        {
+            header('Location: dashboard');
+        }
     }
 
 	public function index()
@@ -77,7 +81,7 @@ class AdminController extends Controller
     public function editing()
     {
         $update = Post::updatePost();
-        header('location:index.php?page=admin.allEpisodes');
+        header('location: adminEpisodes');
         ?>
         <div class="alert alert-success">L'article a bien été modifié.</div>
         <?php
@@ -86,7 +90,7 @@ class AdminController extends Controller
     public function deletePost()
     {
         $delete = Post::deleted();
-        header('location:adminEpisodes');
+        header('location: adminEpisodes');
     }
 
     public function deleteComment()
