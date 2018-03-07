@@ -1,8 +1,6 @@
 <?php
 namespace App;
 use \PDO;
-require('Model/Post.php');
-require('Model/Comments.php');
 
 class Database
 {
@@ -30,10 +28,20 @@ class Database
         return $this->_db;
     }
     
-    public function query($statement, $class_name, $only_one = false)
+    public function query($statement, $class_name = null, $only_one = false)
     {
         $req = $this->getDb()->query($statement);
-        $req->setFetchMode(PDO::FETCH_CLASS, $class_name);
+        
+        if($class_name === null)
+        {
+            $req->setFetchMode(PDO::FETCH_OBJ);
+        }
+        
+        else
+        {
+            $req->setFetchMode(PDO::FETCH_CLASS, $class_name);
+        }
+        
         if($only_one)
         {
             $data = $req->fetch();
@@ -45,11 +53,21 @@ class Database
         return $data;
     }
     
-    public function prepare($statement, $attributes, $class_name, $only_one = false)
+    public function prepare($statement, $attributes, $class_name = null, $only_one = false)
     {
         $req = $this->getDb()->prepare($statement);
         $req->execute($attributes);
-        $req->setFetchMode(PDO::FETCH_CLASS, $class_name);
+        
+        if($class_name === null)
+        {
+            $req->setFetchMode(PDO::FETCH_OBJ);
+        }
+        
+        else
+        {
+            $req->setFetchMode(PDO::FETCH_CLASS, $class_name);
+        }
+
         if($only_one)
         {
             $data = $req->fetch();
@@ -59,5 +77,60 @@ class Database
             $data = $req->fetchAll();   
         }
         return $data;
+    }
+
+    public function insert($statement, $attributes)
+    {
+        $req = $this->getDb()->prepare($statement);
+        $req->execute($attributes);
+
+        if($req === false)
+        {
+            throw new Exception('Impossible d\'ajouter l\'élément. Veuillez réessayer.');
+        }
+        else 
+        {
+            //header('Location: ');
+        }
+    }
+
+    public function counter($statement, $attributes=null)
+    {
+        if($attributes === null)
+        {
+            $req = $this->getDb()->query($statement);
+            $data = $req->fetch();
+            $nbThings = $data['nbThings'];
+            return $nbThings;
+        }
+        elseif ($attributes) {
+            $req = $this->getDb()->prepare($statement);
+            $req->execute($attributes);
+            $data = $req->fetch();
+            $nbThings = $data['nbThings'];
+            return $nbThings;
+        }
+        
+    }
+
+    public function simplePrepare($statement, $attributes)
+    {
+        $req = $this->getDb()->prepare($statement);
+        $req->execute($attributes);
+        
+        $data = $req->fetch();
+        return $data;
+    }
+
+    public function update($statement, $attributes)
+    {
+        $req = $this->getDb()->prepare($statement);
+        $req->execute($attributes); 
+    }
+
+    public function delete($statement, $attributes)
+    {
+        $req = $this->getDb()->prepare($statement);
+        $req->execute($attributes);
     }
 }

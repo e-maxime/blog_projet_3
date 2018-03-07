@@ -7,34 +7,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="/Projet_3/public/css/style.css">
+    <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
+    <script>tinymce.init({ selector:'textarea' });</script>
 </head>
 <body>
-    <nav class="navbar navbar-inverse" style="border-radius: 0; background-color: #343a40; border: 0; margin-bottom: 0;">
+
+    <nav class="navbar navbar-inverse" style="border-radius: 0; background-color: #343a40; border: 0; height: 90px; padding-top: 1%;">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="" style="font-size: 2em;">Adminnistration</a>
+        </div>
         <ul class="nav navbar-nav">
-            <li><a href="home">Accueil</a></li>
-            <li><a href="episodes">Les épisodes</a></li>
+            <li><a href="dashboard">Tableau de bord</a></li>
+            <li><a href="adminEpisodes">Épisodes</a></li>
+            <li><a href="adminComments">Commentaires</a></li>
         </ul>
     </nav>
     
-    <header style="background-color: #007bff; height: 150px;">
-        <div class="container" style="padding-top: 30px;">
-            <h1 style="color: white; text-align: center;">Un billet simple pour l'Alaska - Jean FORTEROCHE</h1>
-        </div>
-    </header>
-
-    <section style="padding-top: 100px;">
+    <section style="">
         <div>
-                <?= $content; ?>
+            <?= $content; ?>
         </div>
     </section>
-
+        
     <footer>
         <nav class="navbar navbar-inverse" style="border-radius: 0; background-color: #343a40; border: 0; margin-bottom: 0;">
             <ul class="nav navbar-nav">
-                <li><a href="login">Se connecter</a></li>
+                <li><a href="disconnect">Se déconnecter</a></li>
             </ul>
         </nav>
     </footer>
-
 </body>
 </html>
