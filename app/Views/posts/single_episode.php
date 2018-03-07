@@ -1,19 +1,17 @@
 <?php \App\App::setTitlePage($post->title); ?>
 
-    <div class="row">
-        <div class="col-lg-8 col-lg-offset-2">
-            <div class="panel panel-primary">
-                <div class="panel-heading">
-                <h3 class="panel-title" style="text-align: center;"><?= $post->title . " - " . $post->author . " le " . $post->date_create_fr; ?></h3>
-                </div>
-            <div class="panel-body"><?= $post->content; ?></div>
-            </div>
+    <section style=" margin-bottom: 100px;">
+        <div style="margin-bottom: 50px;">
+            <h2 style="text-align: center; text-decoration: underline;"><?= $post->title . " - " . $post->author . " le " . $post->date_create_fr; ?></h2>
         </div>
-    </div>
+        <div style="width: 60%; text-align: justify; margin: auto;">
+            <?= $post->content; ?>
+        </div>
+    </section>
     
-    <div class="row">
-        <div class="col-lg-8">
-            <div class="panel panel-success">
+    <section style="background-color: #E8E8E8; padding-top: 30px; padding-bottom: 30px;">
+        <div style="width: 50%; margin-left: 1%;">
+            <div class="panel panel-info" style="margin-bottom: 0;">
                 <div class="panel-heading">
                     <h3 class="panel-title">Commentaires</h3>
                 </div>
@@ -50,11 +48,11 @@
             </table>
             </div>
         </div>
-    </div>
+    </section>
 
-    <div class="row">
-        <div class="col-lg-10">
-            <form class="well col-lg-6" action="insertComment?id=<?= $_GET['id']; ?>" method="post">
+    <section style="">
+        <div style="width: 30%; margin:auto; padding-top: 40px; padding-bottom: 40px;">
+            <form action="insertComment?id=<?= $_GET['id']; ?>" method="post">
             <legend>Commentaire</legend>
                 <div class="form-group">
                     <label for="text">Pseudonyme : </label>
@@ -67,7 +65,7 @@
                     <input type="submit" value="Envoyer" class="btn btn-primary" />
             </form>
         </div>
-    </div>
+    </section>
 
     
 

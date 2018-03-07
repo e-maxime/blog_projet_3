@@ -17,7 +17,8 @@ class Controller
         
         if($view === 'admin.login')
         {
-            require($this->viewPath . str_replace('.', '/', 'admin.login') . '.php');
+            $this->template = 'loginTemplate';
+            require($this->viewPath . 'templates/' . $this->template . '.php');
         }
 
         elseif($tableView[0] === 'admin')

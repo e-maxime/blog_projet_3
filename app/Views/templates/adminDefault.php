@@ -11,8 +11,8 @@
     <script>tinymce.init({ selector:'textarea' });</script>
 </head>
 <body>
-
-    <nav class="navbar navbar-inverse" style="border-radius: 0; background-color: #343a40; border: 0; height: 90px; padding-top: 1%;">
+    <div id="main" style=" position: relative; min-height: 100%;">
+        <nav class="navbar navbar-inverse" style="border-radius: 0; background-color: #343a40; border: 0; height: 90px; padding-top: 1%;">
         <div class="navbar-header">
             <a class="navbar-brand" href="" style="font-size: 2em;">Adminnistration</a>
         </div>
@@ -23,18 +23,20 @@
         </ul>
     </nav>
     
-    <section style="">
+    <section style="padding-bottom: 100px;">
         <div>
             <?= $content; ?>
         </div>
     </section>
         
-    <footer>
+    <footer style="position: absolute; bottom: 0; left: 0; right: 0;">
         <nav class="navbar navbar-inverse" style="border-radius: 0; background-color: #343a40; border: 0; margin-bottom: 0;">
             <ul class="nav navbar-nav">
                 <li><a href="disconnect">Se déconnecter</a></li>
             </ul>
         </nav>
     </footer>
+    </div>
+    
 </body>
 </html>
