@@ -42,32 +42,41 @@ class Post
         $nbPosts = self::counting();
         $nbPage = ceil($nbPosts/self::$nbPostsByPage);
 
+        if(!isset($_GET['p']))
+        {
+            $_GET['p'] = 1;
+        }
+
         if(isset($_GET['p']) && $_GET['p']>0 && $_GET['p']<=$nbPage)
         {
             self::$currentPage = $_GET['p'];
+        }
+        elseif($_GET['p'] > $nbPage)
+        {
+            die('Cette page n\'existe pas.');
         }
         else
         {
             self::$currentPage = 1;
         }
 
-        $html="";
+        $pagination="";
 
         for ($i=1; $i<=$nbPage; $i++)
         {
-            $html .="<a href=\"index.php?page=posts.showAllEpisodes&p=$i\">$i</a> / ";
+            $pagination .="<a href=\"episodes?p=$i\">$i</a> ";
         }
-        return $html;
+        return $pagination;
     }
 
     
     public function getUrl()
     {
-        return 'index.php?page=posts.show&id=' . $this->id;
+        return 'episode?id=' . $this->id;
     }
     
     public function getExcerpt()
     {
-        return substr($this->content, 0, 350) . "...<br/>" . '<a href="'.$this->getUrl().'">Lire la suite</a>';
+        return substr($this->content, 0, 350) . "...<br/>" . '<a href="'.$this->getUrl().'" style="color: #1C5B8E; font-size:0.9em;">Lire la suite</a>';
     }
 }

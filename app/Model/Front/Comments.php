@@ -38,18 +38,22 @@ class Comments
         {
             self::$currentPage = $_GET['p'];
         }
+        elseif(isset($_GET['p']) && $_GET['p'] > $nbPage)
+        {
+            die('Cette page n\'existe pas.');
+        }
         else
         {
             self::$currentPage = 1;
         }
 
-        $html="";
+        $pagination="";
 
         for ($i=1; $i<=$nbPage; $i++)
         {
-            $html .="<a href=\"index.php?page=posts.show&id=".$_GET['id']."&p=$i\">$i</a> / ";
+            $pagination .="<a href=\"episode?id=".$_GET['id']."&p=$i\">$i</a>";
         }
-        return $html;
+        return $pagination;
     }
 
     public static function reportComment()

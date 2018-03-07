@@ -1,3 +1,5 @@
+<?php $template = 'default'; ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,7 +7,7 @@
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" type="text/css" href="css/bootstrap/css/bootstrap.css">
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">
     <link rel="stylesheet" type="text/css" href="css/style.css">
 </head>
 <body>
@@ -19,14 +21,14 @@
         <div class="row">
             <nav class="navbar navbar-inverse">
                 <ul class="nav navbar-nav">
-                    <li><a href="index.php?page=posts.index">Accueil</a></li>
-                    <li><a href="index.php?page=posts.showAllEpisodes">Les épisodes</a></li>
+                    <li><a href="home">Accueil</a></li>
+                    <li><a href="episodes">Les épisodes</a></li>
                 </ul>
             </nav>
         </div>
         
         <div class="row">
-			<form method="POST" action="index.php?page=admin.getLog" class="col-lg-6">
+			<form method="POST" action="connection" class="col-lg-6">
 				<legend>Connexion</legend>
 					<div class="form-group">
 						<label>Nom d'utilisateur : </label>
@@ -44,7 +46,7 @@
             <footer>
                 <nav class="navbar navbar-inverse">
                     <ul class="nav navbar-nav">
-                        <li><a href="index.php?page=admin.login">Se connecter</a></li>
+                        <li><a href="login">Se connecter</a></li>
                     </ul>
                 </nav>
             </footer>

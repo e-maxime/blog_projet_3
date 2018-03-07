@@ -1,5 +1,7 @@
-<h1>Tableau de bord</h1>
-<table class="table table-bordered table-striped table-dark">
+<div class="page-header">
+	<h1 style="margin-left: 2%;">Tableau de bord</h1>
+</div>
+<table class="table table-bordered table-striped table-dark" style="width: 60%; margin:auto;">
 	<caption>
 		<h4>Commentaires signalés</h4>
 	</caption>
@@ -27,8 +29,8 @@
 				<td><?= $comment->nickname; ?></td>
 				<td><?= $comment->content; ?></td>
 				<td>
-				<a href="?page=admin.remove&id=<?=$comment->id;?>"><button class="btn btn-success" style="margin-bottom: 5px;">OK</button></a>
-				<form method="POST", action="?page=admin.deleteComment">
+				<a href="removeEpisode?id=<?=$comment->id;?>"><button class="btn btn-success" style="margin-bottom: 5px;">OK</button></a>
+				<form method="POST", action="deleteComment">
 				<input type="hidden" name="id" value="<?= $comment->id; ?>" />
 				<button type="submit" name="supprimer" class="btn btn-danger">Supprimer</button>
 				</form>

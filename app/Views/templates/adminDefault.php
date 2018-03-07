@@ -6,41 +6,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" crossorigin="anonymous">
-    <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="/Projet_3/public/css/style.css">
     <script src="https://cloud.tinymce.com/stable/tinymce.min.js"></script>
     <script>tinymce.init({ selector:'textarea' });</script>
 </head>
 <body>
-    <div class="container">
-        <div class="row">
-            <header class="page-header">
-                <h1>Administration</h1>
-            </header>
+
+    <nav class="navbar navbar-inverse" style="border-radius: 0; background-color: #343a40; border: 0; height: 90px; padding-top: 1%;">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="" style="font-size: 2em;">Adminnistration</a>
         </div>
-        
-        <div class="row">
-            <nav class="navbar navbar-inverse">
-                <ul class="nav navbar-nav">
-                    <li><a href="index.php?page=admin.index">Tableau de bord</a></li>
-                    <li><a href="index.php?page=admin.allEpisodes">Épisodes</a></li>
-                    <li><a href="index.php?page=admin.allComments">Commentaires</a></li>
-                </ul>
-            </nav>
-        </div>
-        
-        <div class="row">
+        <ul class="nav navbar-nav">
+            <li><a href="dashboard">Tableau de bord</a></li>
+            <li><a href="adminEpisodes">Épisodes</a></li>
+            <li><a href="adminComments">Commentaires</a></li>
+        </ul>
+    </nav>
+    
+    <section style="">
+        <div>
             <?= $content; ?>
         </div>
+    </section>
         
-        <div class="row">
-            <footer>
-                <nav class="navbar navbar-inverse">
-                    <ul class="nav navbar-nav">
-                        <li><a href="index.php?page=admin.disconnect">Se déconnecter</a></li>
-                    </ul>
-                </nav>
-            </footer>
-        </div>
-    </div>
+    <footer>
+        <nav class="navbar navbar-inverse" style="border-radius: 0; background-color: #343a40; border: 0; margin-bottom: 0;">
+            <ul class="nav navbar-nav">
+                <li><a href="disconnect">Se déconnecter</a></li>
+            </ul>
+        </nav>
+    </footer>
 </body>
 </html>
