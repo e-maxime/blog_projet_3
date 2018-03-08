@@ -23,7 +23,7 @@
         </div>
     </header>
 
-    <section style="padding-top: 100px;">
+    <section style="padding-top: 100px; padding-bottom: 100px;">
         <div>
                 <?= $content; ?>
         </div>
