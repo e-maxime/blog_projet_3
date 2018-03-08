@@ -50,13 +50,13 @@ class AdminController extends Controller
 
     public function getLog()
     {
-            if(!empty($_POST['username']) AND !empty($_POST['pass']))
+        if(!empty($_POST['username']) AND !empty($_POST['pass']))
         {
             $log = Login::checkLogin();
 
             if(!$log)
             {
-                header('Location: login');
+                header('Location: login?msg=1');
             }
 
             else
@@ -66,8 +66,8 @@ class AdminController extends Controller
             }
         }
         else
-        {
-            echo "Tous les champs ne sont pas remplis.";
+        {  
+            header('Location: login?msg=2');
         }
         
     }
@@ -81,22 +81,19 @@ class AdminController extends Controller
     public function editing()
     {
         $update = Post::updatePost();
-        header('location: adminEpisodes');
-        ?>
-        <div class="alert alert-success">L'article a bien été modifié.</div>
-        <?php
+        header('location: adminEpisodes?msg=1');
     }
 
     public function deletePost()
     {
         $delete = Post::deleted();
-        header('location: adminEpisodes');
+        header('location: adminEpisodes?msg=2');
     }
 
     public function deleteComment()
     {
         $delete = Comments::deleted();
-        header('location: adminComments');
+        header('location: adminComments?msg=1');
     }
 
     public function add()
@@ -107,13 +104,13 @@ class AdminController extends Controller
     public function adding()
     {
         $delete = Post::addPost();
-        header('location: adminEpisodes');
+        header('location: adminEpisodes?msg=3');
     }
 
     public function remove()
     {
         $remove = Comments::removeComments();
-        header('location: dashboard');
+        header('location: dashboard?msg=1');
     }
 
     public function disconnect()

@@ -12,12 +12,12 @@ class CommentsController extends Controller
             if(!empty($_POST['pseudo']) && !empty($_POST['comment']))
             {
                 $addPostComment = Comments::addComment();
-                header('Location: episode?id='.$_GET['id']);
+                header('Location: episode?id='.$_GET['id'].'&msg=1');
             }
             
             else
             {
-                echo "Tous les champs ne sont pas remplis.";
+                header('Location: episode?id='.$_GET['id'].'&msg=2');
             }
         }
         else

@@ -2,6 +2,27 @@
    <h1 style="margin-left: 2%;">Épisodes</h1>
 </div>
 
+<?php
+if (isset($_GET['msg']) && $_GET['msg'] == 1)
+{
+?>
+   <div class="alert alert-success">L'article a bien été modifié.</div>
+<?php
+}
+elseif(isset($_GET['msg']) && $_GET['msg'] == 2)
+{
+?>
+   <div class="alert alert-info">L'article a bien été supprimé.</div>
+<?php
+}
+elseif(isset($_GET['msg']) && $_GET['msg'] == 3)
+{
+?>
+   <div class="alert alert-success">Un nouvel article a été ajouté.</div>
+<?php
+}
+?>
+
 <table class="table table-bordered table-striped table-dark" style="width: 70%; margin:auto;">
    <caption>
       <h4>Tous les épisodes</h4>

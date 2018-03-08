@@ -1,5 +1,5 @@
-<div class="row">
-	<form method="POST" action="addEpisode" class="col-lg-6">
+<div>
+	<form method="POST" action="addEpisode" style="margin:auto; width: 60%;">
 		<legend>Ajout d'un épisode</legend>
 			<div class="form-group">
 				<label>Titre de l'épisode : </label>

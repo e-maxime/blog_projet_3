@@ -25,7 +25,7 @@
                         <?php echo "<p>De <strong>" . $comment->nickname . "</strong> le " . $comment->date_publish_fr . " : </p><p>" . $comment->content . "</p>"; ?>
                         </div>
                     </td>
-
+    
                     <td>
                         <form method="POST", action="report?id=<?=$_GET['id'];?>">
                             <input type="hidden" name="id" value="<?= $comment->id; ?>" />
@@ -49,6 +49,21 @@
             </div>
         </div>
     </section>
+
+    <?php 
+    if(isset($_GET['msg']) && $_GET['msg'] == 1) 
+    { 
+    ?>
+        <div class="alert alert-success">Votre commentaire a été enregistré.</div>
+    <?php 
+    }
+    elseif (isset($_GET['msg']) && $_GET['msg'] == 2) 
+    {
+    ?>
+        <div class="alert alert-warning">Tous les champs ne sont pas remplis.</div>
+    <?php
+    }
+    ?>
 
     <section style="">
         <div style="width: 30%; margin:auto; padding-top: 40px; padding-bottom: 40px;">

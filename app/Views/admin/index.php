@@ -1,6 +1,16 @@
 <div class="page-header">
 	<h1 style="margin-left: 2%;">Tableau de bord</h1>
 </div>
+
+<?php
+if (isset($_GET['msg']) && $_GET['msg'] == 1)
+{
+?>
+	<div class="alert alert-success">Le commentaire a été approuvé.</div>
+<?php
+}
+?>
+
 <table class="table table-bordered table-striped table-dark" style="width: 60%; margin:auto;">
 	<caption>
 		<h4>Commentaires signalés</h4>
