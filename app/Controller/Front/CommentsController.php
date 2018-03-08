@@ -31,7 +31,7 @@ class CommentsController extends Controller
         if(isset($_GET['id']) && $_GET['id'] > 0)
         {  
             $report = Comments::reportComment();
-            header('Location: episode?id='.$_GET['id']);
+            header('Location: episode?id='.$_GET['id'].'&msg=3');
         }
 
         else

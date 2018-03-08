@@ -8,7 +8,15 @@
             <?= $post->content; ?>
         </div>
     </section>
-    
+    <?php
+    if (isset($_GET['msg']) && $_GET['msg'] == 3) 
+    {
+    ?>
+        <div class="alert alert-info">Le commentaire a bien été signalé.</div>
+    <?php
+    }
+    ?>
+
     <section style="background-color: #E8E8E8; padding-top: 30px; padding-bottom: 30px;">
         <div style="width: 50%; margin-left: 1%;">
             <div class="panel panel-info" style="margin-bottom: 0;">
