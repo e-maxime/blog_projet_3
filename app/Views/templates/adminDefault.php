@@ -11,7 +11,7 @@
     <script>tinymce.init({ selector:'textarea' });</script>
 </head>
 <body>
-    <div id="main" style=" position: relative; min-height: 100%;">
+    <div id="main" style="position: relative; min-height: 100%;">
         <nav class="navbar navbar-inverse" style="border-radius: 0; background-color: #343a40; border: 0; height: 90px; padding-top: 1%;">
         <div class="navbar-header">
             <a class="navbar-brand" href="" style="font-size: 2em;">Adminnistration</a>

@@ -9,7 +9,8 @@
     <link rel="stylesheet" type="text/css" href="/Projet_3/public/css/style.css">
 </head>
 <body>
-    <nav class="navbar navbar-inverse" style="border-radius: 0; background-color: #343a40; border: 0; margin-bottom: 0;">
+    <div style="position: relative; min-height: 100%;">
+        <nav class="navbar navbar-inverse" style="border-radius: 0; background-color: #343a40; border: 0; margin-bottom: 0;">
         <ul class="nav navbar-nav">
             <li><a href="home">Accueil</a></li>
             <li><a href="episodes">Les épisodes</a></li>
@@ -28,13 +29,13 @@
         </div>
     </section>
 
-    <footer>
+    <footer style="position: absolute; bottom: 0; left: 0; right: 0;">
         <nav class="navbar navbar-inverse" style="border-radius: 0; background-color: #343a40; border: 0; margin-bottom: 0;">
             <ul class="nav navbar-nav">
                 <li><a href="login">Se connecter</a></li>
             </ul>
         </nav>
     </footer>
-
+    </div>
 </body>
 </html>

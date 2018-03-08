@@ -67,7 +67,7 @@ class AdminController extends Controller
         }
         else
         {
-            header('Location: login');
+            echo "Tous les champs ne sont pas remplis.";
         }
         
     }
