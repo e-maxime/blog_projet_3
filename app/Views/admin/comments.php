@@ -2,14 +2,7 @@
    <h1 style="margin-left: 2%;">Commentaires</h1>
 </div>
 
-<?php
-if (isset($_GET['msg']) && $_GET['msg'] == 1)
-{
-?>
-   <div class="alert alert-info">Le commentaire a été supprimé.</div>
-<?php
-}
-?>
+<?php \App\Helpers\Alert::getAlert(); ?>
 
 <table class="table table-bordered table-striped table-dark" style="width: 70%; margin:auto;">
    <caption>

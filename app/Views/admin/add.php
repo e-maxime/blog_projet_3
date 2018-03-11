@@ -12,7 +12,3 @@
 				<button class="btn btn-primary">Ajouter</button>
 	</form>
 </div>
-        
-
-
-

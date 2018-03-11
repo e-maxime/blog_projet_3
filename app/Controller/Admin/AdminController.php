@@ -5,9 +5,12 @@ use \App\Model\Admin\Post;
 use \App\Model\Admin\Comments;
 use \App\Model\Admin\Login;
 use \App\Controller\Controller;
+use \App\Helpers\Alert;
 
 class AdminController extends Controller
 {
+    protected $template = 'adminDefault';
+
     public function __construct()
     {
         $auth = new \App\Model\Admin\Login();
@@ -45,6 +48,7 @@ class AdminController extends Controller
 
     public function login()
     {
+        $this->template = 'loginTemplate';
         $this->render('admin.login');  
     }
 
@@ -56,7 +60,8 @@ class AdminController extends Controller
 
             if(!$log)
             {
-                header('Location: login?msg=1');
+                Alert::setAlert('Indentifiants incorrects.', 'danger');
+                header('Location: login');
             }
 
             else
@@ -67,7 +72,8 @@ class AdminController extends Controller
         }
         else
         {  
-            header('Location: login?msg=2');
+            Alert::setAlert('Tous les champs ne sont pas remplis.', 'warning');
+            header('Location: login');
         }
         
     }
@@ -81,19 +87,22 @@ class AdminController extends Controller
     public function editing()
     {
         $update = Post::updatePost();
-        header('location: adminEpisodes?msg=1');
+        Alert::setAlert('L\'article a bien été modifié.');
+        header('location: adminEpisodes');
     }
 
     public function deletePost()
     {
         $delete = Post::deleted();
-        header('location: adminEpisodes?msg=2');
+        Alert::setAlert('L\'article a bien été supprimé.');
+        header('location: adminEpisodes');
     }
 
     public function deleteComment()
     {
         $delete = Comments::deleted();
-        header('location: adminComments?msg=1');
+        Alert::setAlert('Le commentaire a bien été supprimé.');
+        header('location: adminComments');
     }
 
     public function add()
@@ -104,13 +113,15 @@ class AdminController extends Controller
     public function adding()
     {
         $delete = Post::addPost();
-        header('location: adminEpisodes?msg=3');
+        Alert::setAlert('Un nouvel article a été publié.');
+        header('location: adminEpisodes');
     }
 
     public function remove()
     {
         $remove = Comments::removeComments();
-        header('location: dashboard?msg=1');
+        Alert::setAlert('Le commentaire a été approuvé.');
+        header('location: dashboard');
     }
 
     public function disconnect()

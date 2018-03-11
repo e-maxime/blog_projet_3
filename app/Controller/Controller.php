@@ -4,7 +4,7 @@ namespace App\Controller;
 class Controller
 {
     protected $viewPath = '../app/Views/';
-    protected $template;
+    protected $template = 'default';
     
     protected function render($view, $variables=[])
     {
@@ -12,26 +12,8 @@ class Controller
         extract($variables);
         require ($this->viewPath . str_replace('.', '/', $view) . '.php');
         $content = ob_get_clean();
-
-        $tableView = explode('.', $view);
-        
-        if($view === 'admin.login')
-        {
-            $this->template = 'loginTemplate';
-            require($this->viewPath . 'templates/' . $this->template . '.php');
-        }
-
-        elseif($tableView[0] === 'admin')
-        {
-            $this->template = 'adminDefault';
-            require($this->viewPath . 'templates/' . $this->template . '.php');
-        }
-
-        else
-        {
-            $this->template = 'default';
-            require($this->viewPath . 'templates/'. $this->template . '.php');
-        }
+     
+        require($this->viewPath . 'templates/'. $this->template . '.php');
     }
     
     protected function pageNotFound()

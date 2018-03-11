@@ -8,14 +8,6 @@
             <?= $post->content; ?>
         </div>
     </section>
-    <?php
-    if (isset($_GET['msg']) && $_GET['msg'] == 3) 
-    {
-    ?>
-        <div class="alert alert-info">Le commentaire a bien été signalé.</div>
-    <?php
-    }
-    ?>
 
     <section style="background-color: #E8E8E8; padding-top: 30px; padding-bottom: 30px;">
         <div style="width: 50%; margin-left: 1%;">
@@ -58,20 +50,7 @@
         </div>
     </section>
 
-    <?php 
-    if(isset($_GET['msg']) && $_GET['msg'] == 1) 
-    { 
-    ?>
-        <div class="alert alert-success">Votre commentaire a été enregistré.</div>
-    <?php 
-    }
-    elseif (isset($_GET['msg']) && $_GET['msg'] == 2) 
-    {
-    ?>
-        <div class="alert alert-warning">Tous les champs ne sont pas remplis.</div>
-    <?php
-    }
-    ?>
+    <?php \App\Helpers\Alert::getAlert(); ?>
 
     <section style="">
         <div style="width: 30%; margin:auto; padding-top: 40px; padding-bottom: 40px;">

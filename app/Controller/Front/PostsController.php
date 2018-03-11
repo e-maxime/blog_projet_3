@@ -7,7 +7,7 @@ use \App\Controller\Controller;
 
 class PostsController extends Controller
 {   
-    //Liste les différents articles
+    
     public function index()
     {
         $posts = Post::getLastEpisodes();

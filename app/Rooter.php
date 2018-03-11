@@ -27,6 +27,11 @@ class Rooter
 		'removeEpisode' => 'Admin\Admin.remove'
 	];
 
+// $table2=[
+// 'accueil' => ['chemin'=>'', 'controleur'=>'Front\Posts.index']
+
+// ];
+
 		$path = str_replace('/Projet_3/public/', '', $_SERVER['REQUEST_URI']);
 		$path = parse_url($path, PHP_URL_PATH);
 		$path = rtrim($path, '/');
@@ -49,4 +54,6 @@ class Rooter
 			}
 		}
 	}
+
+
 }

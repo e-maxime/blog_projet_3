@@ -2,6 +2,7 @@
 namespace App\Controller\Front;
 use \App\Model\Front\Comments;
 use \App\Controller\Controller;
+use \App\Helpers\Alert;
 
 class CommentsController extends Controller
 {
@@ -12,12 +13,16 @@ class CommentsController extends Controller
             if(!empty($_POST['pseudo']) && !empty($_POST['comment']))
             {
                 $addPostComment = Comments::addComment();
-                header('Location: episode?id='.$_GET['id'].'&msg=1');
+                
+                Alert::setAlert('Votre commentaire a bien été envoyé.');
+
+                header('Location: episode?id='.$_GET['id']);
             }
             
             else
             {
-                header('Location: episode?id='.$_GET['id'].'&msg=2');
+                Alert::setAlert('Tous les champs ne sont pas remplis.', 'warning');
+                header('Location: episode?id='.$_GET['id']);
             }
         }
         else
@@ -31,7 +36,8 @@ class CommentsController extends Controller
         if(isset($_GET['id']) && $_GET['id'] > 0)
         {  
             $report = Comments::reportComment();
-            header('Location: episode?id='.$_GET['id'].'&msg=3');
+            Alert::setAlert('Le commentaire a bien été signalé. Merci.', 'info');
+            header('Location: episode?id='.$_GET['id']);
         }
 
         else
