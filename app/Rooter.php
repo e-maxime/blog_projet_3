@@ -3,42 +3,39 @@ namespace App;
 
 class Rooter
 {
-	public function root()
-	{
-		$table = [
-		'' => 'Front\Posts.index',
-		'home' => 'Front\Posts.index',
-		'episodes' => 'Front\Posts.showAllEpisodes',
-		'episode' => 'Front\Posts.show',
-		'login' => 'Admin\Admin.login',
-		'connection' => 'Admin\Admin.getLog',
-		'dashboard' => 'Admin\Admin.index',
-		'adminEpisodes' => 'Admin\Admin.allEpisodes',
-		'adminComments' => 'Admin\Admin.allComments',
-		'report' => "Front\Comments.report",
-		'disconnect' => "Admin\Admin.disconnect",
-		'deleteComment' => "Admin\Admin.deleteComment",
-		'insertComment' => 'Front\Comments.checkInsertComment',
-		'addEpisode' => 'Admin\Admin.adding',
-		'editEpisode' => 'Admin\Admin.editing',
-		'adminAddNewEpisode' => 'Admin\Admin.add',
-		'adminEditEpisode' => 'Admin\Admin.edit',
-		'deleteEpisode' => 'Admin\Admin.deletePost',
-		'removeEpisode' => 'Admin\Admin.remove'
+	protected $table = [
+		'' => ['path' => 'accueil', 'control' => 'Front\Posts.index'],
+		'home' => ['path' => 'accueil', 'control' => 'Front\Posts.index'],
+		'episodes' =>  ['path' => 'tous-les-episodes', 'control' => 'Front\Posts.showAllEpisodes'],
+		'episode' => [ 'path' => 'episode', 'control' => 'Front\Posts.show'],
+		'login' => ['path' => 'se-connecter', 'control' => 'Admin\Admin.login'],
+		'connection' => ['path' => 'connexion', 'control' => 'Admin\Admin.getLog'],
+		'dashboard' => ['path' => 'tableau-de-bord', 'control' => 'Admin\Admin.index'],
+		'adminEpisodes' => ['path' => 'admin-episodes', 'control' => 'Admin\Admin.allEpisodes'],
+		'adminComments' => ['path' => 'admin-commentaires', 'control' => 'Admin\Admin.allComments'],
+		'report' => ['path' => 'signaler', 'control' => 'Front\Comments.report'],
+		'disconnect' => ['path' => 'deconnexion', 'control' => 'Admin\Admin.disconnect'],
+		'deleteComment' => ['path' => 'supprimer-commentaire', 'control' => 'Admin\Admin.deleteComment'],
+		'insertComment' => ['path' => 'ajouter-commentaire', 'control' => 'Front\Comments.checkInsertComment'],
+		'addEpisode' => ['path' => 'ajouter-episode', 'control' => 'Admin\Admin.adding'],
+		'editEpisode' => ['path' => 'modifier', 'control' => 'Admin\Admin.editing'],
+		'adminAddNewEpisode' => ['path' => 'ajout-episode', 'control' => 'Admin\Admin.add'],
+		'adminEditEpisode' => ['path' => 'edition', 'control' => 'Admin\Admin.edit'],
+		'deleteEpisode' => ['path' => 'supprimer-episode', 'control' => 'Admin\Admin.deletePost'],
+		'removeEpisode' => ['path' => 'approuver', 'control' => 'Admin\Admin.remove']
 	];
 
-// $table2=[
-// 'accueil' => ['chemin'=>'', 'controleur'=>'Front\Posts.index']
-
-// ];
-
+	public function root()
+	{
 		$path = str_replace('/Projet_3/public/', '', $_SERVER['REQUEST_URI']);
 		$path = parse_url($path, PHP_URL_PATH);
 		$path = rtrim($path, '/');
 
-		if (array_key_exists($path, $table)) 
+		$tableControl = $this->table[$path];
+		
+		if (array_key_exists($path, $this->table)) 
 		{
-			$var = explode('.', $table[$path]);
+			$var = explode('.', $tableControl['control']);
 			$controller = '\App\Controller\\' . $var[0] . 'Controller';
 			$controller = new $controller();
 			
@@ -55,5 +52,9 @@ class Rooter
 		}
 	}
 
+	public function urlRoot($path, $control)
+	{
+
+	}
 
 }
