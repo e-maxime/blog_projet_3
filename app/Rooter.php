@@ -1,5 +1,6 @@
 <?php
 namespace App;
+use \App\App;
 
 class Rooter
 {
@@ -35,11 +36,11 @@ class Rooter
 		
 		if (array_key_exists($path, $this->table)) 
 		{
-			$var = explode('.', $tableControl['control']);
-			$controller = '\App\Controller\\' . $var[0] . 'Controller';
+			$explodeControl = explode('.', $tableControl['control']);
+			$controller = '\App\Controller\\' . $explodeControl[0] . 'Controller';
 			$controller = new $controller();
 			
-			$action = $var[1];
+			$action = $explodeControl[1];
 			if(method_exists($controller, $action))
 			{
 				$controller->$action();
@@ -47,14 +48,31 @@ class Rooter
 
 			else
 			{
-				\App\App::pageNotFound();
+				App::pageNotFound();
 			}
 		}
+		else
+			{
+				die('Page non trouvée.');
+			}
 	}
 
-	public function urlRoot($path, $control)
+	public function urlRoot($urlPath)
 	{
+		// $path = str_replace('/Projet_3/public/', '', $_SERVER['REQUEST_URI']);
+		// $path = parse_url($path, PHP_URL_PATH);
+		// $path = rtrim($path, '/');
+		
+		// $tablePath = $this->table[$path];
 
+		// if(in_array($urlPath, $tablePath, TRUE))
+		// {
+		// 	return $path;
+		// }
+
+		// else
+		// {
+		// 	App::pageNotFound();
+		// }
 	}
-
 }
