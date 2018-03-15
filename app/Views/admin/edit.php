@@ -1,5 +1,5 @@
 <div>
-	<form method="POST" action="editEpisode?id=<?=$post->id;?>" style="margin:auto; width: 60%;">
+	<form method="POST" action="editEpisode?id=<?=$post->id;?>">
 		<legend>Édition</legend>
 			<div class="form-group">
 				<label>Titre de l'article : </label>

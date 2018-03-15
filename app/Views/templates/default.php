@@ -9,33 +9,31 @@
     <link rel="stylesheet" type="text/css" href="/Projet_3/public/css/style.css">
 </head>
 <body>
-    <div style="position: relative; min-height: 100%;">
-        <nav class="navbar navbar-inverse" style="border-radius: 0; background-color: #343a40; border: 0; margin-bottom: 0;">
-        <ul class="nav navbar-nav">
-            <li><a href="home">Accueil</a></li>
-            <li><a href="episodes">Les épisodes</a></li>
-        </ul>
-    </nav>
-    
-    <header style="background-color: #007bff; height: 150px;">
-        <div class="container" style="padding-top: 30px;">
-            <h1 style="color: white; text-align: center;">Un billet simple pour l'Alaska - Jean FORTEROCHE</h1>
+    <div class="container">
+        <div id="header" class="jumbotron">
+            <h1>Un billet simple pour l'Alaska</h1>
+            <p>Écrit par Jean FORTEROCHE</p>
         </div>
-    </header>
 
-    <section style="padding-top: 100px; padding-bottom: 100px;">
-        <div>
+        <div class="row">
+            <div id="menu" class="col-md-3">
+                <h3>Menu</h3>
+                <ul class="nav nav-pills nav-stacked">
+                    <li><a href="home">Accueil</a></li>
+                    <li><a href="episodes">Les épisodes</a></li>
+                </ul>
+            </div>
+
+            <div id="content" class="col-md-9">
                 <?= $content; ?>
+            </div>
         </div>
-    </section>
 
-    <footer style="position: absolute; bottom: 0; left: 0; right: 0;">
-        <nav class="navbar navbar-inverse" style="border-radius: 0; background-color: #343a40; border: 0; margin-bottom: 0;">
-            <ul class="nav navbar-nav">
-                <li><a href="login">Se connecter</a></li>
-            </ul>
-        </nav>
-    </footer>
+        <hr>
+
+        <footer>
+            <p><a href="login">Se connecter</a></p>
+        </footer>
     </div>
 </body>
 </html>

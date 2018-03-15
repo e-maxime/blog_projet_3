@@ -1,15 +1,25 @@
 <?php foreach($posts as $post): ?>
-<section style="border-bottom: 1px solid #999999;">
-<div style="text-align: justify; width: 50%; margin-left: 1%; margin-bottom: 2%;">
+
+<section>
+
+<div style="text-align: justify; margin-left: 1%; margin-bottom: 2%;">
+
     <div>
-        <h3><a style="color: #1C5B8E;" href="<?= $post->getUrl(); ?>"><?= $post->title . " - " . $post->author . " le " . $post->date_create_fr; ?></a></h3>
+        <h3><a style="color: #000066;" href="<?= $post->getUrl(); ?>"><?= $post->title . " - " . $post->author . " le " . $post->date_create_fr; ?></a>
+        </h3>
     </div>
-    <div><?= $post->getExcerpt(); ?></div>
+
+    <div><p style="font-size: 1.1em;"><?= $post->getExcerpt(); ?></p></div>
+
 </div>
+
 </section>
+
+<hr style="border-color: #bfbfbf;">
+
 <?php endforeach; ?>
 
-<div style="text-align: right;">
+<div style="text-align:center;">
 	<ul class="pagination">
 		<li><?= $paging; ?></li>
 	</ul>

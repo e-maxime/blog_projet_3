@@ -11,32 +11,38 @@
     <script>tinymce.init({ selector:'textarea' });</script>
 </head>
 <body>
-    <div id="main" style="position: relative; min-height: 100%;">
-        <nav class="navbar navbar-inverse" style="border-radius: 0; background-color: #343a40; border: 0; height: 90px; padding-top: 1%;">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="" style="font-size: 2em;">Adminnistration</a>
+    <div class="container">
+        <div id="header" class="jumbotron" style="background-color: #4d4d4d; color: white;">
+            <h1>Administration</h1>
         </div>
-        <ul class="nav navbar-nav">
-            <li><a href="dashboard">Tableau de bord</a></li>
-            <li><a href="adminEpisodes">Épisodes</a></li>
-            <li><a href="adminComments">Commentaires</a></li>
-        </ul>
-    </nav>
-    
-    <section style="padding-bottom: 100px;">
-        <div>
-            <?= $content; ?>
-        </div>
-    </section>
+
+        <div class="row">
+            <div id="menu" class="col-md-3">
+                
+                <h3>Menu</h3>
+            
+                <ul class="nav nav-pills nav-stacked">
+                    <li><a style="color: #000099;" href="dashboard">Tableau de bord</a></li>
+                    <li><a style="color: #000099;" href="adminEpisodes">Épisodes</a></li>
+                    <li><a style="color: #000099;" href="adminComments">Commentaires</a></li>
+                </ul>
+            </div>
         
-    <footer style="position: absolute; bottom: 0; left: 0; right: 0;">
-        <nav class="navbar navbar-inverse" style="border-radius: 0; background-color: #343a40; border: 0; margin-bottom: 0;">
-            <ul class="nav navbar-nav">
-                <li><a href="disconnect">Se déconnecter</a></li>
+            <div id="content" class="col-md-9">
+                <div>
+                    <?= $content; ?>
+                </div>
+            </div>
+        </div>
+        
+        <hr>
+
+        <footer>
+            <ul class="nav nav-pills">
+                <li class="nav-item"><a style="color: #000099;" class="nav-link" href="home">Retour à l'accueil</a></li>
+                <li class="nav-item"><a style="color: #000099;" class="nav-link" href="disconnect">Se déconnecter</a></li>
             </ul>
-        </nav>
-    </footer>
+        </footer>
     </div>
-    
 </body>
 </html>

@@ -1,10 +1,10 @@
 <div class="page-header">
-	<h1 style="margin-left: 2%;">Tableau de bord</h1>
+	<h1>Tableau de bord</h1>
 </div>
 
 <?php \App\Helpers\Alert::getAlert(); ?>
 
-<table class="table table-bordered table-striped table-dark" style="width: 60%; margin:auto;">
+<table class="table table-bordered table-striped table-dark">
 	<caption>
 		<h4>Commentaires signalés</h4>
 	</caption>

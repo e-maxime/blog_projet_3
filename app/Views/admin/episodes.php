@@ -1,10 +1,10 @@
 <div class="page-header">
-   <h1 style="margin-left: 2%;">Épisodes</h1>
+   <h1>Épisodes</h1>
 </div>
 
 <?php \App\Helpers\Alert::getAlert(); ?>
 
-<table class="table table-bordered table-striped table-dark" style="width: 70%; margin:auto;">
+<table class="table table-bordered table-striped table-dark"">
    <caption>
       <h4>Tous les épisodes</h4>
    </caption>

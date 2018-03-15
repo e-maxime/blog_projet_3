@@ -1,20 +1,19 @@
 <?php \App\App::setTitlePage($post->title); ?>
 
-    <section style=" margin-bottom: 100px;">
+    <div class="row" style=" margin-bottom: 100px;">
         <div style="margin-bottom: 50px;">
-            <h2 style="text-align: center; text-decoration: underline;"><?= $post->title . " - " . $post->author . " le " . $post->date_create_fr; ?></h2>
+            <h1 style="text-align: center; text-decoration: underline;"><?= $post->title . " - " . $post->author . " le " . $post->date_create_fr; ?></h1>
         </div>
-        <div style="width: 60%; text-align: justify; margin: auto;">
+        <div class="col-md-10 col-md-offset-1" style="text-align: justify; text-indent:3%;">
             <?= $post->content; ?>
         </div>
-    </section>
+    </div>
 
-    <section style="background-color: #E8E8E8; padding-top: 30px; padding-bottom: 30px;">
-        <div style="width: 50%; margin-left: 1%;">
-            <div class="panel panel-info" style="margin-bottom: 0;">
-                <div class="panel-heading">
-                    <h3 class="panel-title">Commentaires</h3>
-                </div>
+    <div class="row" style="background-color: white; padding-top: 30px; padding-bottom: 30px;">
+        <h2>Commentaires</h2>
+        <hr>
+        <div class="col-md-10 col-md-offset-1">
+            <div class="panel panel-primary" style="margin-bottom: 0;">
     
             <table class="table">
             <?php foreach($comments as $comment): ?>
@@ -48,14 +47,15 @@
             </table>
             </div>
         </div>
-    </section>
+    </div>
 
     <?php \App\Helpers\Alert::getAlert(); ?>
 
-    <section style="">
-        <div style="width: 30%; margin:auto; padding-top: 40px; padding-bottom: 40px;">
+    <div class="row">
+        <h3 style="">Laissez un commentaire</h3>
+        <hr>
+        <div class="col-md-6 col-md-offset-1" style="padding-top: 40px; padding-bottom: 40px;">
             <form action="insertComment?id=<?= $_GET['id']; ?>" method="post">
-            <legend>Commentaire</legend>
                 <div class="form-group">
                     <label for="text">Pseudonyme : </label>
                     <input type="text" class="form-control" name="pseudo" />
@@ -67,9 +67,4 @@
                     <input type="submit" value="Envoyer" class="btn btn-primary" />
             </form>
         </div>
-    </section>
-
-    
-
-
-
+    </div>
