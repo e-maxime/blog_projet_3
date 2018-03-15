@@ -10,7 +10,7 @@
 </head>
 <body>
     <div class="container">
-        <div id="header" class="jumbotron">
+        <div id="header" class="jumbotron" style="background-color: #000033; color:white; border-radius: 2px 2px 5px 5px;">
             <h1>Un billet simple pour l'Alaska</h1>
             <p>Écrit par Jean FORTEROCHE</p>
         </div>
@@ -19,8 +19,8 @@
             <div id="menu" class="col-md-3">
                 <h3>Menu</h3>
                 <ul class="nav nav-pills nav-stacked">
-                    <li><a href="home">Accueil</a></li>
-                    <li><a href="episodes">Les épisodes</a></li>
+                    <li><a style="color: #000099;" href="home">Accueil</a></li>
+                    <li><a style="color: #000099;" href="episodes">Les épisodes</a></li>
                 </ul>
             </div>
 
@@ -32,7 +32,10 @@
         <hr>
 
         <footer>
-            <p><a href="login">Se connecter</a></p>
+            <ul class="nav nav-pills">
+                <li><a style="color: #000099;" href="login">Se connecter</a></li>
+            </ul>
+            <p></p>
         </footer>
     </div>
 </body>

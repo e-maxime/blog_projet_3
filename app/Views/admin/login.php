@@ -1,6 +1,5 @@
-<section>
-    <?php \App\Helpers\Alert::getAlert(); ?>
-    <div style="width: 20%; margin-left: 4%; margin-bottom: 2%;">
+<?php \App\Helpers\Alert::getAlert(); ?>
+    <div class="col-md-6">
         <form method="POST" action="connection">
                 <div class="form-group">
                     <label>Nom d'utilisateur : </label>
@@ -12,8 +11,8 @@
                 </div>
                     <button class="btn btn-primary">Envoyer</button>
         </form>
-</div>
-</section>
+    </div>
+
 
 
 

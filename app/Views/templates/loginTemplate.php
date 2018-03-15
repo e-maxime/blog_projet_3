@@ -10,23 +10,28 @@
 </head>
 <body>
     <div class="container">
+        <div id="header" class="jumbotron" style="background-color: #000033; color:white; border-radius: 2px 2px 5px 5px;">
+            <h1>Un billet simple pour l'Alaska</h1>
+            <p>Écrit par Jean FORTEROCHE</p>
+        </div>
+
         <div class="row">
-            <nav class="navbar navbar-inverse" style="border-radius: 0; background-color: #343a40; border: 0;">
-                <ul class="nav navbar-nav">
-                    <li><a style="font-size: 1.1em;" href="home">Accueil</a></li>
-                    <li><a style="font-size: 1.1em;" href="episodes">Les épisodes</a></li>
+            <div id="menu" class="col-md-3">
+                <h3>Menu</h3>
+                <ul class="nav nav-pills nav-stacked">
+                    <li><a style="color: #000099;" style="font-size: 1.1em;" href="home">Accueil</a></li>
+                    <li><a style="color: #000099;" style="font-size: 1.1em;" href="episodes">Les épisodes</a></li>
                 </ul>
-            </nav>
-        </div>
+            </div>
 
-        <div>
-            <header class="page-header">
-                <h1>Connexion à l'administration</h1>
-            </header>
-        </div>
+            <div id="content" class="col-md-9">
+                <header class="page-header">
+                    <h1>Connexion à l'administration</h1>
+                </header>
 
-        <div id="content" class="col-md-12">
-            <?= $content; ?>
+                <?= $content; ?>
+
+            </div>
         </div>
     </div>
 </body>

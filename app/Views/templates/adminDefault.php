@@ -12,7 +12,7 @@
 </head>
 <body>
     <div class="container">
-        <div id="header" class="jumbotron" style="background-color: #4d4d4d; color: white;">
+        <div id="header" class="jumbotron" style="background-color: #4d4d4d; color: white; border-radius: 2px 2px 5px 5px;">
             <h1>Administration</h1>
         </div>
 
