@@ -1,5 +1,6 @@
 <?php 
 use \App\Rooter;
+use \App\Helpers\Alert;
 \App\App::setTitlePage($post->title); 
 ?>
 
@@ -52,7 +53,11 @@ use \App\Rooter;
         </div>
     </div>
 
-    <?php \App\Helpers\Alert::getAlert(); ?>
+    <?php 
+    if (isset($_SESSION['alert'])) {
+       Alert::getAlert();
+    }
+    ?>
 
     <div class="row">
         <h3 style="">Laissez un commentaire</h3>
