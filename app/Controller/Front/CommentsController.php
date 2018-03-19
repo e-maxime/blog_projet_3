@@ -16,13 +16,13 @@ class CommentsController extends Controller
                 
                 Alert::setAlert('Votre commentaire a bien été envoyé.');
 
-                header('Location: episode?id='.$_GET['id']);
+                header('Location: chapitre?id='.$_GET['id']);
             }
             
             else
             {
                 Alert::setAlert('Tous les champs ne sont pas remplis.', 'warning');
-                header('Location: episode?id='.$_GET['id']);
+                header('Location: chapitre?id='.$_GET['id']);
             }
         }
         else
@@ -37,7 +37,7 @@ class CommentsController extends Controller
         {  
             $report = Comments::reportComment();
             Alert::setAlert('Le commentaire a bien été signalé. Merci.', 'info');
-            header('Location: episode?id='.$_GET['id']);
+            header('Location: chapitre?id='.$_GET['id']);
         }
 
         else

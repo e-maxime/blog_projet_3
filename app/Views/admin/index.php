@@ -1,8 +1,17 @@
+<?php
+use App\Rooter;
+use App\Helpers\Alert;
+?>
+
 <div class="page-header">
 	<h1>Tableau de bord</h1>
 </div>
 
-<?php \App\Helpers\Alert::getAlert(); ?>
+<?php 
+if (isset($_SESSION['alert'])) {
+	Alert::getAlert();
+}
+?>
 
 <table class="table table-bordered table-striped table-dark">
 	<caption>
@@ -32,7 +41,7 @@
 				<td><?= $comment->nickname; ?></td>
 				<td><?= $comment->content; ?></td>
 				<td>
-				<a href="removeEpisode?id=<?=$comment->id;?>"><button class="btn btn-success" style="margin-bottom: 5px;">OK</button></a>
+				<a href="<?= Rooter::routeUrl('removeEpisode'); ?>?id=<?=$comment->id;?>"><button class="btn btn-success" style="margin-bottom: 5px;">OK</button></a>
 				<form method="POST", action="deleteComment">
 				<input type="hidden" name="id" value="<?= $comment->id; ?>" />
 				<button type="submit" name="supprimer" class="btn btn-danger">Supprimer</button>

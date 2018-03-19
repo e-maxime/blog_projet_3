@@ -2,6 +2,7 @@
 namespace App\Model\Front;
 use App\App;
 use \PDO;
+use \App\Rooter;
 
 class Post
 {   
@@ -64,7 +65,7 @@ class Post
 
         for ($i=1; $i<=$nbPage; $i++)
         {
-            $pagination .="<a href=\"episodes?p=$i\">$i</a> ";
+            $pagination .="<a href=" . Rooter::routeUrl('episodes') . "?p=$i>$i</a>";
         }
         return $pagination;
     }
@@ -72,7 +73,8 @@ class Post
     
     public function getUrl()
     {
-        return 'episode?id=' . $this->id;
+
+        return Rooter::routeUrl('episode') . '?id=' . $this->id;
     }
     
     public function getExcerpt()

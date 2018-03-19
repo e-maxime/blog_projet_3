@@ -4,11 +4,11 @@ use \App\App;
 
 class Rooter
 {
-	protected $table = [
-		'' => ['path' => 'accueil', 'control' => 'Front\Posts.index'],
+	protected static $table = [
+		'' => ['path' => '', 'control' => 'Front\Posts.index'],
 		'home' => ['path' => 'accueil', 'control' => 'Front\Posts.index'],
 		'episodes' =>  ['path' => 'tous-les-episodes', 'control' => 'Front\Posts.showAllEpisodes'],
-		'episode' => [ 'path' => 'episode', 'control' => 'Front\Posts.show'],
+		'episode' => [ 'path' => 'chapitre', 'control' => 'Front\Posts.show'],
 		'login' => ['path' => 'se-connecter', 'control' => 'Admin\Admin.login'],
 		'connection' => ['path' => 'connexion', 'control' => 'Admin\Admin.getLog'],
 		'dashboard' => ['path' => 'tableau-de-bord', 'control' => 'Admin\Admin.index'],
@@ -26,53 +26,49 @@ class Rooter
 		'removeEpisode' => ['path' => 'approuver', 'control' => 'Admin\Admin.remove']
 	];
 
-	public function root()
+	public static function root()
 	{
 		$path = str_replace('/Projet_3/public/', '', $_SERVER['REQUEST_URI']);
 		$path = parse_url($path, PHP_URL_PATH);
 		$path = rtrim($path, '/');
 
-		$tableControl = $this->table[$path];
-		
-		if (array_key_exists($path, $this->table)) 
+		foreach (self::$table as $routeName => $routeData) 
 		{
-			$explodeControl = explode('.', $tableControl['control']);
-			$controller = '\App\Controller\\' . $explodeControl[0] . 'Controller';
-			$controller = new $controller();
-			
-			$action = $explodeControl[1];
-			if(method_exists($controller, $action))
+			if ($routeData['path'] == $path) 
 			{
-				$controller->$action();
-			}
+				$explodeControl = explode('.', $routeData['control']);
+				$controller = '\App\Controller\\' . $explodeControl[0] . 'Controller';
 
-			else
-			{
-				App::pageNotFound();
+				if (class_exists($controller)) {
+					$controller = new $controller();
+					$action = $explodeControl[1];
+				}
+				break;
 			}
 		}
+
+		if(isset($controller, $action) && method_exists($controller, $action))
+		{
+			$controller->$action();
+		}
+
 		else
-			{
-				die('Page non trouvée.');
-			}
+		{
+			App::pageNotFound();
+		}
 	}
 
-	public function urlRoot($urlPath)
-	{
-		// $path = str_replace('/Projet_3/public/', '', $_SERVER['REQUEST_URI']);
-		// $path = parse_url($path, PHP_URL_PATH);
-		// $path = rtrim($path, '/');
-		
-		// $tablePath = $this->table[$path];
+	public static function routeUrl($routeName)
+	{	
+		if(array_key_exists($routeName, self::$table))
+		{
+			$tableRoute = self::$table[$routeName];
+			return $tableRoute['path'];
+		}
 
-		// if(in_array($urlPath, $tablePath, TRUE))
-		// {
-		// 	return $path;
-		// }
-
-		// else
-		// {
-		// 	App::pageNotFound();
-		// }
+		else
+		{
+			null;
+		}
 	}
 }

@@ -18,13 +18,13 @@ class AdminController extends Controller
         $path = parse_url($path, PHP_URL_PATH);
         $path = rtrim($path, '/');
 
-        if(!$auth->logged() && $path != 'login')
+        if(!$auth->logged() && $path != 'se-connecter')
         {
-            header('Location: login');
+            header('Location: se-connecter');
         }
-        elseif($auth->logged() & $path === 'login')
+        elseif($auth->logged() & $path === 'se-connecter')
         {
-            header('Location: dashboard');
+            header('Location: tableau-de-bord');
         }
     }
 
@@ -61,19 +61,19 @@ class AdminController extends Controller
             if(!$log)
             {
                 Alert::setAlert('Indentifiants incorrects.', 'danger');
-                header('Location: login');
+                header('Location: se-connecter');
             }
 
             else
             {
                 $_SESSION['auth'] = $log['id'];
-                header('Location: dashboard');   
+                header('Location: tableau-de-bord');   
             }
         }
         else
         {  
             Alert::setAlert('Tous les champs ne sont pas remplis.', 'warning');
-            header('Location: login');
+            header('Location: se-connecter');
         }
         
     }
@@ -88,21 +88,21 @@ class AdminController extends Controller
     {
         $update = Post::updatePost();
         Alert::setAlert('L\'article a bien été modifié.');
-        header('location: adminEpisodes');
+        header('location: admin-episodes');
     }
 
     public function deletePost()
     {
         $delete = Post::deleted();
         Alert::setAlert('L\'article a bien été supprimé.');
-        header('location: adminEpisodes');
+        header('location: admin-episodes');
     }
 
     public function deleteComment()
     {
         $delete = Comments::deleted();
         Alert::setAlert('Le commentaire a bien été supprimé.');
-        header('location: adminComments');
+        header('location: admin-commentaires');
     }
 
     public function add()
@@ -114,19 +114,19 @@ class AdminController extends Controller
     {
         $delete = Post::addPost();
         Alert::setAlert('Un nouvel article a été publié.');
-        header('location: adminEpisodes');
+        header('location: admin-episodes');
     }
 
     public function remove()
     {
         $remove = Comments::removeComments();
         Alert::setAlert('Le commentaire a été approuvé.');
-        header('location: dashboard');
+        header('location: tableau-de-bord');
     }
 
     public function disconnect()
     {
         session_destroy();
-        header('Location: login');
+        header('Location: se-connecter');
     }
 }

@@ -1,4 +1,7 @@
-<?php \App\App::setTitlePage($post->title); ?>
+<?php 
+use \App\Rooter;
+\App\App::setTitlePage($post->title); 
+?>
 
     <div class="row" style=" margin-bottom: 100px;">
         <div style="margin-bottom: 50px;">
@@ -26,7 +29,7 @@
                     </td>
     
                     <td>
-                        <form method="POST", action="report?id=<?=$_GET['id'];?>">
+                        <form method="POST", action="<?= Rooter::routeUrl('report'); ?>?id=<?=$_GET['id'];?>">
                             <input type="hidden" name="id" value="<?= $comment->id; ?>" />
                             <button type="submit" name="report" class="btn btn-link" style="color:red;">Signaler</button>
                         </form>
@@ -55,7 +58,7 @@
         <h3 style="">Laissez un commentaire</h3>
         <hr>
         <div class="col-md-6 col-md-offset-1" style="padding-top: 40px; padding-bottom: 40px;">
-            <form action="insertComment?id=<?= $_GET['id']; ?>" method="post">
+            <form action="<?= Rooter::routeUrl('insertComment'); ?>?id=<?= $_GET['id']; ?>" method="post">
                 <div class="form-group">
                     <label for="text">Pseudonyme : </label>
                     <input type="text" class="form-control" name="pseudo" />

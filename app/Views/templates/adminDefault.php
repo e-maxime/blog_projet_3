@@ -1,3 +1,6 @@
+<?php
+use App\Rooter;
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -22,9 +25,9 @@
                 <h3>Menu</h3>
             
                 <ul class="nav nav-pills nav-stacked">
-                    <li><a style="color: #000099;" href="dashboard">Tableau de bord</a></li>
-                    <li><a style="color: #000099;" href="adminEpisodes">Épisodes</a></li>
-                    <li><a style="color: #000099;" href="adminComments">Commentaires</a></li>
+                    <li><a style="color: #000099;" href="<?= Rooter::routeUrl('dashboard'); ?>">Tableau de bord</a></li>
+                    <li><a style="color: #000099;" href="<?= Rooter::routeUrl('adminEpisodes'); ?>">Épisodes</a></li>
+                    <li><a style="color: #000099;" href="<?= Rooter::routeUrl('adminComments'); ?>">Commentaires</a></li>
                 </ul>
             </div>
         
@@ -39,8 +42,8 @@
 
         <footer>
             <ul class="nav nav-pills">
-                <li class="nav-item"><a style="color: #000099;" class="nav-link" href="home">Retour à l'accueil</a></li>
-                <li class="nav-item"><a style="color: #000099;" class="nav-link" href="disconnect">Se déconnecter</a></li>
+                <li class="nav-item"><a style="color: #000099;" class="nav-link" href="<?= Rooter::routeUrl('home'); ?>">Retour à l'accueil</a></li>
+                <li class="nav-item"><a style="color: #000099;" class="nav-link" href="<?= Rooter::routeUrl('disconnect'); ?>">Se déconnecter</a></li>
             </ul>
         </footer>
     </div>

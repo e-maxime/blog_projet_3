@@ -1,6 +1,9 @@
-<?php \App\Helpers\Alert::getAlert(); ?>
+<?php
+use App\Rooter;
+\App\Helpers\Alert::getAlert();
+?>
     <div class="col-md-6">
-        <form method="POST" action="connection">
+        <form method="POST" action="<?= Rooter::routeUrl('connection'); ?>">
                 <div class="form-group">
                     <label>Nom d'utilisateur : </label>
                     <input id="username" name="username" type="text" class="form-control">

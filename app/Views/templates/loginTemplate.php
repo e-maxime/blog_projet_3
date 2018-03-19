@@ -1,7 +1,11 @@
+<?php
+use \App\Rooter;
+use \App\App;
+?>
 <!DOCTYPE html>
 <html>
 <head>
-	<title><?= \App\App::getTitlePage(); ?></title>
+	<title><?= App::getTitlePage(); ?></title>
 	<meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -19,8 +23,8 @@
             <div id="menu" class="col-md-3">
                 <h3>Menu</h3>
                 <ul class="nav nav-pills nav-stacked">
-                    <li><a style="color: #000099;" style="font-size: 1.1em;" href="home">Accueil</a></li>
-                    <li><a style="color: #000099;" style="font-size: 1.1em;" href="episodes">Les épisodes</a></li>
+                    <li><a style="color: #000099;" style="font-size: 1.1em;" href="<?= Rooter::routeUrl('home'); ?>">Accueil</a></li>
+                    <li><a style="color: #000099;" style="font-size: 1.1em;" href="<?= Rooter::routeUrl('episodes'); ?>">Les épisodes</a></li>
                 </ul>
             </div>
 

@@ -1,8 +1,16 @@
+<?php
+use App\Rooter;
+use App\Helpers\Alert;
+?>
 <div class="page-header">
    <h1>Commentaires</h1>
 </div>
 
-<?php \App\Helpers\Alert::getAlert(); ?>
+<?php 
+if (isset($_SESSION['alert'])) {
+   Alert::getAlert();
+}
+?>
 
 <table class="table table-bordered table-striped table-dark">
    <caption>
@@ -22,7 +30,7 @@
 			<td><?= $comment->content; ?></td>
 			<td><?= $comment->nickname . "<br/>Le " . $comment->date_publish_fr; ?></td>
 			<td>
-				<form method="POST" action="deleteComment">
+				<form method="POST" action="<?= Rooter::routeUrl('deleteComment'); ?>">
                <input type="hidden" name="id" value="<?= $comment->id; ?>" />
                <button type="submit" name="supprimer" class="btn btn-danger">Supprimer</button>
             </form>
