@@ -63,12 +63,7 @@ class Rooter
 		if(array_key_exists($routeName, self::$table))
 		{
 			$tableRoute = self::$table[$routeName];
-			return $tableRoute['path'];
 		}
-
-		else
-		{
-			null;
-		}
+		return isset($tableRoute) ? $tableRoute['path'] : null;
 	}
 }
