@@ -39,5 +39,10 @@ if (isset($_SESSION['alert'])) {
 	<?php endforeach; ?>
     </tbody>
 </table>
+<div style="text-align: center;">
+   <ul class="pagination">
+      <li><?= $paging; ?></li>
+   </ul>
+</div>
 
 

@@ -36,14 +36,16 @@ class AdminController extends Controller
 
     public function allEpisodes()
     {
+        $paging = Post::paging();
         $posts = Post::getAllEpisodes();
-        $this->render('admin.episodes', compact('posts'));
+        $this->render('admin.episodes', compact('posts', 'paging'));
     }
 
     public function allComments()
     {
+        $paging = Comments::paging();
         $comments = Comments::getAllComments();
-        $this->render('admin.comments', compact('comments')); 
+        $this->render('admin.comments', compact('comments', 'paging')); 
     }
 
     public function login()

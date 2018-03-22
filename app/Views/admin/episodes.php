@@ -41,4 +41,10 @@ if (isset($_SESSION['alert'])) {
     </tbody>
 </table>
 
+<div style="text-align: center;">
+   <ul class="pagination">
+      <li><?= $paging; ?></li>
+   </ul>
+</div>
+
 
