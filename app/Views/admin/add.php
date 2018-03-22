@@ -1,8 +1,8 @@
 <?php
-use App\Rooter;
+use App\Router;
 ?>
 <div>
-	<form method="POST" action="<?= Rooter::routeUrl('addEpisode'); ?>">
+	<form method="POST" action="<?= Router::routeUrl('addEpisode'); ?>">
 		<legend>Ajout d'un épisode</legend>
 			<div class="form-group">
 				<label>Titre de l'épisode : </label>

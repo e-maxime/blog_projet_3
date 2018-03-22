@@ -2,7 +2,7 @@
 namespace App;
 use \App\App;
 
-class Rooter
+class Router
 {
 	protected static $table = [
 		'' => ['path' => '', 'control' => 'Front\Posts.index'],
@@ -26,7 +26,7 @@ class Rooter
 		'removeEpisode' => ['path' => 'approuver', 'control' => 'Admin\Admin.remove']
 	];
 
-	public static function root()
+	public static function route()
 	{
 		$path = str_replace('/Projet_3/public/', '', $_SERVER['REQUEST_URI']);
 		$path = parse_url($path, PHP_URL_PATH);

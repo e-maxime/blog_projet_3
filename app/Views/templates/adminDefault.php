@@ -1,5 +1,5 @@
 <?php
-use App\Rooter;
+use App\Router;
 ?>
 <!DOCTYPE html>
 <html>
@@ -25,9 +25,9 @@ use App\Rooter;
                 <h3>Menu</h3>
             
                 <ul class="nav nav-pills nav-stacked">
-                    <li><a style="color: #000099;" href="<?= Rooter::routeUrl('dashboard'); ?>">Tableau de bord</a></li>
-                    <li><a style="color: #000099;" href="<?= Rooter::routeUrl('adminEpisodes'); ?>">Épisodes</a></li>
-                    <li><a style="color: #000099;" href="<?= Rooter::routeUrl('adminComments'); ?>">Commentaires</a></li>
+                    <li><a style="color: #000099;" href="<?= Router::routeUrl('dashboard'); ?>">Tableau de bord</a></li>
+                    <li><a style="color: #000099;" href="<?= Router::routeUrl('adminEpisodes'); ?>">Épisodes</a></li>
+                    <li><a style="color: #000099;" href="<?= Router::routeUrl('adminComments'); ?>">Commentaires</a></li>
                 </ul>
             </div>
         
@@ -42,8 +42,8 @@ use App\Rooter;
 
         <footer>
             <ul class="nav nav-pills">
-                <li class="nav-item"><a style="color: #000099;" class="nav-link" href="<?= Rooter::routeUrl('home'); ?>">Retour à l'accueil</a></li>
-                <li class="nav-item"><a style="color: #000099;" class="nav-link" href="<?= Rooter::routeUrl('disconnect'); ?>">Se déconnecter</a></li>
+                <li class="nav-item"><a style="color: #000099;" class="nav-link" href="<?= Router::routeUrl('home'); ?>">Retour à l'accueil</a></li>
+                <li class="nav-item"><a style="color: #000099;" class="nav-link" href="<?= Router::routeUrl('disconnect'); ?>">Se déconnecter</a></li>
             </ul>
         </footer>
     </div>

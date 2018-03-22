@@ -1,8 +1,8 @@
 <?php
-use App\Rooter;
+use App\Router;
 ?>
 <div>
-	<form method="POST" action="<?= Rooter::routeUrl('editEpisode'); ?>?id=<?=$post->id;?>">
+	<form method="POST" action="<?= Router::routeUrl('editEpisode'); ?>?id=<?=$post->id;?>">
 		<legend>Édition</legend>
 			<div class="form-group">
 				<label>Titre de l'article : </label>

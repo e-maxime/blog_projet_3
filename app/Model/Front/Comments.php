@@ -2,7 +2,7 @@
 namespace App\Model\Front;
 use App\App;
 use \PDO;
-use \App\Rooter;
+use \App\Router;
 
 class Comments
 {
@@ -52,7 +52,7 @@ class Comments
 
         for ($i=1; $i<=$nbPage; $i++)
         {
-            $pagination .= "<a href=" . Rooter::routeUrl('episode') . "?id=" . $_GET['id'] . "&p=$i>$i</a>";
+            $pagination .= "<a href=" . Router::routeUrl('episode') . "?id=" . $_GET['id'] . "&p=$i>$i</a>";
         }
         return $pagination;
     }

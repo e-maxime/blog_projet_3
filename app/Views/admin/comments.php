@@ -1,5 +1,5 @@
 <?php
-use App\Rooter;
+use App\Router;
 use App\Helpers\Alert;
 ?>
 <div class="page-header">
@@ -30,7 +30,7 @@ if (isset($_SESSION['alert'])) {
 			<td><?= $comment->content; ?></td>
 			<td><?= $comment->nickname . "<br/>Le " . $comment->date_publish_fr; ?></td>
 			<td>
-				<form method="POST" action="<?= Rooter::routeUrl('deleteComment'); ?>">
+				<form method="POST" action="<?= Router::routeUrl('deleteComment'); ?>">
                <input type="hidden" name="id" value="<?= $comment->id; ?>" />
                <button type="submit" name="supprimer" class="btn btn-danger">Supprimer</button>
             </form>

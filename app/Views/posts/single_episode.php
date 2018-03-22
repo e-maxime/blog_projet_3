@@ -1,5 +1,5 @@
 <?php 
-use \App\Rooter;
+use \App\Router;
 use \App\Helpers\Alert;
 \App\App::setTitlePage($post->title); 
 ?>
@@ -30,7 +30,7 @@ use \App\Helpers\Alert;
                     </td>
     
                     <td>
-                        <form method="POST", action="<?= Rooter::routeUrl('report'); ?>?id=<?=$_GET['id'];?>">
+                        <form method="POST", action="<?= Router::routeUrl('report'); ?>?id=<?=$_GET['id'];?>">
                             <input type="hidden" name="id" value="<?= $comment->id; ?>" />
                             <button type="submit" name="report" class="btn btn-link" style="color:red;">Signaler</button>
                         </form>
@@ -63,7 +63,7 @@ use \App\Helpers\Alert;
         <h3 style="">Laissez un commentaire</h3>
         <hr>
         <div class="col-md-6 col-md-offset-1" style="padding-top: 40px; padding-bottom: 40px;">
-            <form action="<?= Rooter::routeUrl('insertComment'); ?>?id=<?= $_GET['id']; ?>" method="post">
+            <form action="<?= Router::routeUrl('insertComment'); ?>?id=<?= $_GET['id']; ?>" method="post">
                 <div class="form-group">
                     <label for="text">Pseudonyme : </label>
                     <input type="text" class="form-control" name="pseudo" />

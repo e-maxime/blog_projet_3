@@ -1,5 +1,5 @@
 <?php
-use \App\Rooter;
+use \App\Router;
 use \App\App;
 ?>
 <!DOCTYPE html>
@@ -23,8 +23,8 @@ use \App\App;
             <div id="menu" class="col-md-3">
                 <h3>Menu</h3>
                 <ul class="nav nav-pills nav-stacked">
-                    <li><a style="color: #000099;" style="font-size: 1.1em;" href="<?= Rooter::routeUrl('home'); ?>">Accueil</a></li>
-                    <li><a style="color: #000099;" style="font-size: 1.1em;" href="<?= Rooter::routeUrl('episodes'); ?>">Les épisodes</a></li>
+                    <li><a style="color: #000099;" style="font-size: 1.1em;" href="<?= Router::routeUrl('home'); ?>">Accueil</a></li>
+                    <li><a style="color: #000099;" style="font-size: 1.1em;" href="<?= Router::routeUrl('episodes'); ?>">Les épisodes</a></li>
                 </ul>
             </div>
 

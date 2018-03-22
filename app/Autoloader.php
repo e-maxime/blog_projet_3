@@ -15,10 +15,5 @@ class Autoloader
 		$class_name = str_replace('\\', '/', $class_name);
 
 		require($class_name . '.php');
-
-		if (!class_exists($class)) {
-			trigger_error('Page non trouvée.', E_USER_WARNING);
-		}
-
 	}
 }
