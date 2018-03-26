@@ -19,7 +19,7 @@ use \App\Router;
         </div>
 
         <div class="row">
-            <div id="menu" class="col-md-3" style="background-color: #e6e6e6; padding-top: 30px; padding-bottom: 50px; border-radius: 2px 2px 2px 2px;">
+            <div id="menu" class="col-md-3">
                 <h3 style="color:black;">Menu</h3>
                 <ul class="nav nav-pills nav-stacked">
                     <li><a style="color: #000099;" href="<?= Router::routeUrl('home');?>">Accueil</a></li>
