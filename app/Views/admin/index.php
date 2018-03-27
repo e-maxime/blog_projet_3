@@ -42,7 +42,7 @@ if (isset($_SESSION['alert'])) {
 				<td><?= $comment->content; ?></td>
 				<td>
 				<a href="<?= Router::routeUrl('removeEpisode'); ?>?id=<?=$comment->id;?>"><button class="btn btn-success" style="margin-bottom: 5px;">OK</button></a>
-				<form method="POST", action="deleteComment">
+				<form method="POST", action="<?= Router::routeUrl('deleteComment'); ?>">
 				<input type="hidden" name="id" value="<?= $comment->id; ?>" />
 				<button type="submit" name="supprimer" class="btn btn-danger">Supprimer</button>
 				</form>
